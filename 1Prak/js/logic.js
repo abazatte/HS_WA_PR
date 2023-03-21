@@ -23,7 +23,25 @@ function backToTop() {
   document.documentElement.scrollTop = 0;
 }
 
-$("#brotForm").submit(function( event ) {
-  alert($('#titel').val());
-  event.preventDefault();
-});
+function addRow() {
+  var id = document.getElementById("id").value;
+  var name = document.getElementById("name").value;
+  var year = document.getElementById("year").value;
+  var art = document.getElementById("art").value;
+  var vegan = document.getElementById("vegan").checked;
+  var gluten = document.getElementById("gluten").checked;
+  var table = document.getElementById("brotTable");
+  var row = table.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  cell1.innerHTML = id;
+  cell2.innerHTML = name;
+  cell3.innerHTML = year;
+  cell4.innerHTML = art;
+  cell5.innerHTML = vegan ? "✔️" : "❌";
+  cell6.innerHTML = gluten ? "✔️" : "❌";
+}
