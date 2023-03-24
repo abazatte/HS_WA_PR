@@ -50,22 +50,36 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="brotForm" novalidate>
               <div class="mb-3">
                 <label for="id">ID</label>
-                <input type="number" class="form-control" id="id" name="id">
+                <input type="number" class="form-control" id="id" name="id" min="0" required>
+              
+                <div class="invalid-feedback">
+                  Bitte eine positive Zahl eingeben.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" required>
+                
+                <div class="invalid-feedback">
+                  Bitte einen gültigen Namen eingeben.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="year">Erfindungsjahr</label>
-                <input type="number" class="form-control" id="year" name="year">
+                <input type="number" class="form-control" id="year" name="year" required>
+                <div class="invalid-feedback">
+                  Bitte ein gültiges Jahr eingeben.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="art">Art</label>
-                <input type="text" class="form-control" id="art" name="art">
+                <input type="text" class="form-control" id="art" name="art" required>
+                <div class="invalid-feedback">
+                  Die Art des Brotes fehlt.
+                </div>
               </div>
               <div class="form-check mb-3">
                 <label class="form-check-label" for="vegan">
