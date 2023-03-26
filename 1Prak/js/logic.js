@@ -23,6 +23,10 @@ function backToTop() {
   document.documentElement.scrollTop = 0;
 }
 
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+
 function addRow() {
   //unser formular
   const form = document.getElementById("brotForm");

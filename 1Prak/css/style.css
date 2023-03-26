@@ -9,6 +9,12 @@ nav {
     display: none;
 }
 
+.divider{
+    background-color: black;
+    height: 2px;
+    margin: 20px 0;
+}
+
 .carousel-inner > .carousel-item > img {
     width:1280px;
     height:720px;
