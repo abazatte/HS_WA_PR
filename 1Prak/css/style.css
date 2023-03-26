@@ -30,3 +30,8 @@ nav {
         content: none;
     }
 }
+
+.card > img {
+    width: 286px;
+    height: 191px;
+}
