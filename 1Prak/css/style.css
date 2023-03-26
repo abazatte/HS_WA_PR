@@ -1,6 +1,6 @@
-nav {
+/* nav {
     background-color: lightblue;
-}
+} */
 
 #btn-back-to-top {
     position: fixed;
@@ -10,7 +10,7 @@ nav {
 }
 
 .divider{
-    background-color: black;
+    background-color: #839496;
     height: 2px;
     margin: 20px 0;
 }
