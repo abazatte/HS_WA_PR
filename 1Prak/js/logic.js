@@ -49,8 +49,11 @@ function addRow() {
     cell4.innerHTML = art;
     cell5.innerHTML = vegan ? "✔️" : "❌";
     cell6.innerHTML = gluten ? "✔️" : "❌";
+    id.value = '';
+    name.value = '';
+    year.value = '';
+    art.value = '';
+    vegan.checked = false;
+    gluten.checked = false;
   }
-
-
-
 }

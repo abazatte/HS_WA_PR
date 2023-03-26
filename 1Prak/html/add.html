@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand" id="navbar-id">Placeholder</a>
+      <a class="navbar-brand" id="navbar-id">BreadStar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,81 +30,77 @@
           <li class="nav-item">
             <a class="nav-link" href="random.html">RandomSeite</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="random2.html">Random2Seite</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Brot hinzufügen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="brotForm" novalidate>
+            <div class="mb-3">
+              <label for="id">ID</label>
+              <input type="number" class="form-control" id="id" name="id" min="0" required>
 
-  <div class="container text-center">
-    <!-- Button to open the modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-      Brot hinzufügen
-    </button>
+              <div class="invalid-feedback">
+                Bitte eine positive Zahl eingeben.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Brot hinzufügen</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="brotForm" novalidate>
-              <div class="mb-3">
-                <label for="id">ID</label>
-                <input type="number" class="form-control" id="id" name="id" min="0" required>
-              
-                <div class="invalid-feedback">
-                  Bitte eine positive Zahl eingeben.
-                </div>
+              <div class="invalid-feedback">
+                Bitte einen gültigen Namen eingeben.
               </div>
-              <div class="mb-3">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-                
-                <div class="invalid-feedback">
-                  Bitte einen gültigen Namen eingeben.
-                </div>
+            </div>
+            <div class="mb-3">
+              <label for="year">Erfindungsjahr</label>
+              <input type="number" class="form-control" id="year" name="year" required>
+              <div class="invalid-feedback">
+                Bitte ein gültiges Jahr eingeben.
               </div>
-              <div class="mb-3">
-                <label for="year">Erfindungsjahr</label>
-                <input type="number" class="form-control" id="year" name="year" required>
-                <div class="invalid-feedback">
-                  Bitte ein gültiges Jahr eingeben.
-                </div>
+            </div>
+            <div class="mb-3">
+              <label for="art">Art</label>
+              <input type="text" class="form-control" id="art" name="art" required>
+              <div class="invalid-feedback">
+                Die Art des Brotes fehlt.
               </div>
-              <div class="mb-3">
-                <label for="art">Art</label>
-                <input type="text" class="form-control" id="art" name="art" required>
-                <div class="invalid-feedback">
-                  Die Art des Brotes fehlt.
-                </div>
-              </div>
-              <div class="form-check mb-3">
-                <label class="form-check-label" for="vegan">
-                  Vegan
-                </label>
-                <input class="form-check-input" type="checkbox" id="vegan" name="vegan">
-              </div>
-              <div class="form-check">
-                <label class="form-check-label" for="gluten">
-                  Glutenfrei
-                </label>
-                <input class="form-check-input" type="checkbox" id="gluten" name="gluten">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="addRow()">Brot hinzufügen</button>
-          </div>
+            </div>
+            <div class="form-check mb-3">
+              <label class="form-check-label" for="vegan">
+                Vegan
+              </label>
+              <input class="form-check-input" type="checkbox" id="vegan" name="vegan">
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="gluten">
+                Glutenfrei
+              </label>
+              <input class="form-check-input" type="checkbox" id="gluten" name="gluten">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="addRow()">Brot hinzufügen</button>
         </div>
       </div>
     </div>
   </div>
+  <br>
   <div class="container">
-    <h2>Brotliste</h2>
+    <h2 class="text-center">Brotliste</h2>
     <table class="table" id="brotTable">
       <thead>
         <tr>
@@ -116,7 +112,7 @@
           <th scope="col">Glutenfrei</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-group-divider">
         <tr>
           <th scope="row">1</th>
           <td>Pumpernickel</td>
@@ -160,13 +156,21 @@
       </tbody>
     </table>
   </div>
-  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+
+  <div class="container text-center">
+    <!-- Button to open the modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+      Brot hinzufügen
+    </button>
+    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script src=" https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js "></script>
   <script src="../js/logic.js"></script>
 </body>
+
 </html>
