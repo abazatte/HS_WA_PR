@@ -123,6 +123,8 @@
           <th scope="col">Art</th>
           <th scope="col">Vegan</th>
           <th scope="col">Glutenfrei</th>
+          <th scope="col"> </th>
+          <th scope="col"> </th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -139,8 +141,15 @@
           <tr *ngIf="brot.glutenFree==true">✔️</tr>
           <tr *ngIf="brot.glutenFree==false">❌</tr>
         </td>
+        <td>
+          <button class="btn btn-info">edit</button>
+        </td>
+        <td>
+          <button class="btn btn-danger">del</button>
+        </td>
         </tr>
       </tbody>
+
     </table>
   </div>
 

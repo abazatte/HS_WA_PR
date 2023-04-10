@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import BrotJson from './form_init.json';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button'; 
 
 interface Brot {
   name : String;
