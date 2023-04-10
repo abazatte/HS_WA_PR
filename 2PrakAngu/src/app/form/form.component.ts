@@ -19,17 +19,14 @@ interface Brot {
 })
 export class FormComponent {
   brote: Brot[] = BrotJson;
-  heroForm: any;
-  hero: any;
   constructor(private modal: NgbModal){
     console.log(this.brote);
   }
 
   closeModal: string = '';
 
-  id: number = 0;
   name: string = '';
-  year: number = 0;
+  year: any = 0;
   art: string = '';
   vegan: boolean = false;
   gluten: boolean = false;
@@ -53,19 +50,28 @@ export class FormComponent {
     }
   }
 
-  public addBrot(id : number, name : string, year : number, art : string, vegan: boolean, gluten: boolean) {
-    console.log(id, name, year, art, vegan, gluten);
+  public addBrot(name : string, year : number, art : string, vegan: boolean, gluten: boolean) {
+    console.log(name, year, art, vegan, gluten);
     this.clear();
   }
 
   private clear() {
-    this.id = 0;
     this.name = '';
     this.year = 0;
     this.art = '';
     this.vegan = false;
     this.gluten = false;
   } 
+  powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
 
+  hero = {name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0]};
+  brot: Brot = {
+    id: 0,
+    name: '',
+    year: 0,
+    type: '',
+    vegan: false,
+    glutenFree: false
+  };
 }
 
