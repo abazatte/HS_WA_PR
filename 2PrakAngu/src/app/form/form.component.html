@@ -38,155 +38,6 @@
       </div>
     </div>
   </nav>
-  <!-- Modal 
-  <ng-template #brotData let-modal>
-
-  
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Brot hinzufügen</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="brotForm" novalidate>
-            <div class="mb-3">
-              <label for="id">ID</label>
-              <input type="number" class="form-control" id="id" name="id" min="0" required>
-
-              <div class="invalid-feedback">
-                Bitte eine positive Zahl eingeben.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required>
-
-              <div class="invalid-feedback">
-                Bitte einen gültigen Namen eingeben.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="year">Erfindungsjahr</label>
-              <input type="number" class="form-control" id="year" name="year" required>
-              <div class="invalid-feedback">
-                Bitte ein gültiges Jahr eingeben.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="art">Art</label>
-              <input type="text" class="form-control" id="art" name="art" required>
-              <div class="invalid-feedback">
-                Die Art des Brotes fehlt.
-              </div>
-            </div>
-            <div class="form-check mb-3">
-              <label class="form-check-label" for="vegan">
-                Vegan
-              </label>
-              <input class="form-check-input" type="checkbox" id="vegan" name="vegan">
-            </div>
-            <div class="form-check">
-              <label class="form-check-label" for="gluten">
-                Glutenfrei
-              </label>
-              <input class="form-check-input" type="checkbox" id="gluten" name="gluten">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="addRow()">Brot hinzufügen</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>-->
-<div>
-
-  <h2>Template-Driven Form</h2>
-  <form #heroForm="ngForm" appIdentityRevealed>
-    <div [hidden]="heroForm.submitted">
-      <div class="cross-validation" [class.cross-validation-error]="heroForm.errors?.['identityRevealed'] && (heroForm.touched || heroForm.dirty)">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" class="form-control"
-                required minlength="4" appForbiddenName="bob"
-                [(ngModel)]="hero.name" #name="ngModel">
-
-          <div *ngIf="name.invalid && (name.dirty || name.touched)"
-              class="alert">
-
-            <div *ngIf="name.errors?.['required']">
-              Name is required.
-            </div>
-            <div *ngIf="name.errors?.['minlength']">
-              Name must be at least 4 characters long.
-            </div>
-            <div *ngIf="name.errors?.['forbiddenName']">
-              Name cannot be Bob.
-            </div>
-
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="alterEgo">Alter Ego</label>
-        <input type="text"
-                 id="alterEgo"
-                 name="alterEgo"
-                 #alterEgo="ngModel"
-                 [(ngModel)]="hero.alterEgo"
-                 [ngModelOptions]="{ updateOn: 'blur' }"
-                 appUniqueAlterEgo>
-          <div *ngIf="alterEgo.pending">Validating...</div>
-          <div *ngIf="alterEgo.invalid" class="alert alter-ego-errors">
-            <div *ngIf="alterEgo.errors?.['uniqueAlterEgo']">
-              Alter ego is already taken.
-            </div>
-          </div>
-        </div>
-
-        <div *ngIf="heroForm.errors?.['identityRevealed'] && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert">
-            Name cannot match alter ego.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="power">Hero Power</label>
-        <select id="power"
-                name="power"
-                required [(ngModel)]="hero.power"
-                #power="ngModel">
-          <option *ngFor="let p of powers" [value]="p">{{p}}</option>
-        </select>
-
-        <div *ngIf="power.errors && power.touched" class="alert">
-          <div *ngIf="power.errors['required']">Power is required.</div>
-        </div>
-      </div>
-
-      <p>Complete the form to enable the Submit button.</p>
-      <button type="submit"
-              [disabled]="heroForm.invalid">Submit</button>
-      <button type="button"
-              (click)="heroForm.resetForm({})">Reset</button>
-    </div>
-
-    <div class="submitted-message" *ngIf="heroForm.submitted">
-      <p>You've submitted your hero, {{ heroForm.value.name }}!</p>
-      <button type="button" (click)="heroForm.resetForm({})">Add new hero</button>
-    </div>
-  </form>
-</div>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->
   <!-- Modal -->
   <ng-template #brotData let-modal>
     <div class="modal-header">
@@ -195,68 +46,71 @@ can be found in the LICENSE file at https://angular.io/license
     </div>
     <div class="modal-body">
       <form #brotForm="ngForm" appIdentityRevealed>
-        <div class="cross-validation" [class.cross-validation-error]="brotForm.errors?.['identityRevealed'] && (brotForm.touched || brotForm.dirty)">
-        <div [hidden]="brotForm.submitted">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-control" required [(ngModel)]="brot.name" #name="ngModel">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)"
-              class="alert">
+        <div class="cross-validation"
+          [class.cross-validation-error]="brotForm.errors?.['identityRevealed'] && (brotForm.touched || brotForm.dirty)">
+          <div [hidden]="brotForm.submitted">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required [(ngModel)]="brot.name"
+                #name="ngModel">
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
 
-              <div *ngIf="name.errors?.['required']">
-                Name is required.
+                <div *ngIf="name.errors?.['required']">
+                  Name is required.
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="year">Erfindungsjahr</label>
-            <input type="number" id="year" name="year" class="form-control" required [(ngModel)]="brot.year" #year="ngModel">
-            <div *ngIf="year.invalid && (year.dirty || year.touched)"
-              class="alert">
+            <div class="form-group">
+              <label for="year">Erfindungsjahr</label>
+              <input type="number" id="year" name="year" class="form-control" required [(ngModel)]="brot.year"
+                #year="ngModel">
+              <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert">
 
-              <div *ngIf="year.errors?.['required']">
-                Erfindungsjahr is required.
+                <div *ngIf="year.errors?.['required']">
+                  Erfindungsjahr is required.
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="type">Art</label>
-            <input type="text" id="type" name="type" class="form-control" required [(ngModel)]="brot.type" #type="ngModel">
-            <div *ngIf="type.invalid && (type.dirty || type.touched)"
-              class="alert">
+            <div class="form-group">
+              <label for="type">Art</label>
+              <input type="text" id="type" name="type" class="form-control" required [(ngModel)]="brot.type"
+                #type="ngModel">
+              <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert">
 
-              <div *ngIf="type.errors?.['required']">
-                Art is required.
+                <div *ngIf="type.errors?.['required']">
+                  Art is required.
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check mb-3">
-              <label class="form-check-label" for="vegan">
-                Vegan
-              </label>
-              <input class="form-check-input" type="checkbox" id="vegan" name="vegan" [(ngModel)]="brot.vegan" #vegan="ngModel">
+            <div class="form-group">
+              <div class="form-check mb-3">
+                <label class="form-check-label" for="vegan">
+                  Vegan
+                </label>
+                <input class="form-check-input" type="checkbox" id="vegan" name="vegan" [(ngModel)]="brot.vegan"
+                  #vegan="ngModel">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check mb-3">
-              <label class="form-check-label" for="glutenFree">
-                Glutenfrei
-              </label>
-              <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree" [(ngModel)]="brot.glutenFree" #glutenFree="ngModel">
+            <div class="form-group">
+              <div class="form-check mb-3">
+                <label class="form-check-label" for="glutenFree">
+                  Glutenfrei
+                </label>
+                <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree"
+                  [(ngModel)]="brot.glutenFree" #glutenFree="ngModel">
+              </div>
             </div>
           </div>
         </div>
-        </div>
-      </form></div>
-    
+      </form>
+    </div>
+
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-      <button type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)" class="btn btn-primary" >Brot hinzufügen</button>
+      <button type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
+        class="btn btn-primary">Brot hinzufügen</button>
     </div>
   </ng-template>
-
-
   <br>
   <div class="container table-responsive">
     <h2 class="text-center">Brotliste</h2>
@@ -277,8 +131,14 @@ can be found in the LICENSE file at https://angular.io/license
           <td>{{ brot.name }}</td>
           <td>{{ brot.year }}</td>
           <td>{{ brot.type }}</td>
-          <td><tr *ngIf="brot.vegan==true">✔️</tr><tr *ngIf="brot.vegan==false">❌</tr></td>
-          <td><tr *ngIf="brot.glutenFree==true">✔️</tr><tr *ngIf="brot.glutenFree==false">❌</tr></td>
+          <td>
+        <tr *ngIf="brot.vegan==true">✔️</tr>
+        <tr *ngIf="brot.vegan==false">❌</tr>
+        </td>
+        <td>
+          <tr *ngIf="brot.glutenFree==true">✔️</tr>
+          <tr *ngIf="brot.glutenFree==false">❌</tr>
+        </td>
         </tr>
       </tbody>
     </table>

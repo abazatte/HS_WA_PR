@@ -4,7 +4,6 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface Brot {
-  id : Number;
   name : String;
   year : Number;
   type : String;
@@ -51,7 +50,14 @@ export class FormComponent {
   }
 
   public addBrot(name : string, year : number, art : string, vegan: boolean, gluten: boolean) {
-    console.log(name, year, art, vegan, gluten);
+    let newBrot: Brot = {
+      name: name,
+      year: year,
+      type: art,
+      vegan: vegan,
+      glutenFree: gluten
+    };
+    this.brote.push(newBrot);
     this.clear();
   }
 
@@ -66,7 +72,6 @@ export class FormComponent {
 
   hero = {name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0]};
   brot: Brot = {
-    id: 0,
     name: '',
     year: 0,
     type: '',
