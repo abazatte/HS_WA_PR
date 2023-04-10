@@ -39,6 +39,9 @@
     </div>
   </nav>
   <!-- Modal -->
+  <ng-template #brotData let-modal>
+
+  
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -99,6 +102,7 @@
       </div>
     </div>
   </div>
+</ng-template>
   <br>
   <div class="container table-responsive">
     <h2 class="text-center">Brotliste</h2>
@@ -121,7 +125,7 @@
 
   <div class="container text-center">
     <!-- Button to open the modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    <button type="button" class="btn btn-primary" (click)="openModal(brotData)" data-bs-toggle="modal" data-bs-target="#myModal">
       Brot hinzufügen
     </button>
     <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
