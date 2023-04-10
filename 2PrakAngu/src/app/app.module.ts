@@ -7,6 +7,7 @@ import { FormComponent } from './form/form.component';
 import { IndexComponent } from './index/index.component';
 import { BackenComponent } from './backen/backen.component';
 import { ShowComponent } from './show/show.component';
+import { BrotmodalComponent } from './brotmodal/brotmodal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ShowComponent } from './show/show.component';
     FormComponent,
     IndexComponent,
     BackenComponent,
-    ShowComponent
+    ShowComponent,
+    BrotmodalComponent
   ],
   imports: [
     BrowserModule,
