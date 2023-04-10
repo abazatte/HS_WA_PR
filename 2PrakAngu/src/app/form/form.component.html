@@ -38,71 +38,6 @@
       </div>
     </div>
   </nav>
-  <!-- Modal 
-  <ng-template #brotData let-modal>
-
-  
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Brot hinzufügen</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="brotForm" novalidate>
-            <div class="mb-3">
-              <label for="id">ID</label>
-              <input type="number" class="form-control" id="id" name="id" min="0" required>
-
-              <div class="invalid-feedback">
-                Bitte eine positive Zahl eingeben.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required>
-
-              <div class="invalid-feedback">
-                Bitte einen gültigen Namen eingeben.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="year">Erfindungsjahr</label>
-              <input type="number" class="form-control" id="year" name="year" required>
-              <div class="invalid-feedback">
-                Bitte ein gültiges Jahr eingeben.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="art">Art</label>
-              <input type="text" class="form-control" id="art" name="art" required>
-              <div class="invalid-feedback">
-                Die Art des Brotes fehlt.
-              </div>
-            </div>
-            <div class="form-check mb-3">
-              <label class="form-check-label" for="vegan">
-                Vegan
-              </label>
-              <input class="form-check-input" type="checkbox" id="vegan" name="vegan">
-            </div>
-            <div class="form-check">
-              <label class="form-check-label" for="gluten">
-                Glutenfrei
-              </label>
-              <input class="form-check-input" type="checkbox" id="gluten" name="gluten">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="addRow()">Brot hinzufügen</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>-->
   <!-- Modal -->
   <ng-template #brotData let-modal>
     <div class="modal-header">
@@ -110,57 +45,72 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <form novalidate>
-        <div class="mb-3">
-          <label for="id">ID</label>
-          <input type="number" class="form-control" id="id" name="id" min="0" required>
-          <div class="invalid-feedback">
-            Bitte eine positive Zahl eingeben.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
+      <form #brotForm="ngForm" appIdentityRevealed>
+        <div class="cross-validation"
+          [class.cross-validation-error]="brotForm.errors?.['identityRevealed'] && (brotForm.touched || brotForm.dirty)">
+          <div [hidden]="brotForm.submitted">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required [(ngModel)]="brot.name"
+                #name="ngModel">
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
 
-          <div class="invalid-feedback">
-            Bitte einen gültigen Namen eingeben.
+                <div *ngIf="name.errors?.['required']">
+                  Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="year">Erfindungsjahr</label>
+              <input type="number" id="year" name="year" class="form-control" required [(ngModel)]="brot.year"
+                #year="ngModel">
+              <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert">
+
+                <div *ngIf="year.errors?.['required']">
+                  Erfindungsjahr is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="type">Art</label>
+              <input type="text" id="type" name="type" class="form-control" required [(ngModel)]="brot.type"
+                #type="ngModel">
+              <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert">
+
+                <div *ngIf="type.errors?.['required']">
+                  Art is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check mb-3">
+                <label class="form-check-label" for="vegan">
+                  Vegan
+                </label>
+                <input class="form-check-input" type="checkbox" id="vegan" name="vegan" [(ngModel)]="brot.vegan"
+                  #vegan="ngModel">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check mb-3">
+                <label class="form-check-label" for="glutenFree">
+                  Glutenfrei
+                </label>
+                <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree"
+                  [(ngModel)]="brot.glutenFree" #glutenFree="ngModel">
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="year">Erfindungsjahr</label>
-          <input type="number" class="form-control" id="year" name="year" required>
-          <div class="invalid-feedback">
-            Bitte ein gültiges Jahr eingeben.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="art">Art</label>
-          <input type="text" class="form-control" id="art" name="art" required>
-          <div class="invalid-feedback">
-            Die Art des Brotes fehlt.
-          </div>
-        </div>
-        <div class="form-check mb-3">
-          <label class="form-check-label" for="vegan">
-            Vegan
-          </label>
-          <input class="form-check-input" type="checkbox" id="vegan" name="vegan">
-        </div>
-        <div class="form-check">
-          <label class="form-check-label" for="gluten">
-            Glutenfrei
-          </label>
-          <input class="form-check-input" type="checkbox" id="gluten" name="gluten">
         </div>
       </form>
     </div>
+
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-      <button type="button" class="btn btn-primary" >Brot hinzufügen</button>
+      <button type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
+        class="btn btn-primary">Brot hinzufügen</button>
     </div>
   </ng-template>
-
-
   <br>
   <div class="container table-responsive">
     <h2 class="text-center">Brotliste</h2>
@@ -181,8 +131,14 @@
           <td>{{ brot.name }}</td>
           <td>{{ brot.year }}</td>
           <td>{{ brot.type }}</td>
-          <td><tr *ngIf="brot.vegan==true">✔️</tr><tr *ngIf="brot.vegan==false">❌</tr></td>
-          <td><tr *ngIf="brot.glutenFree==true">✔️</tr><tr *ngIf="brot.glutenFree==false">❌</tr></td>
+          <td>
+        <tr *ngIf="brot.vegan==true">✔️</tr>
+        <tr *ngIf="brot.vegan==false">❌</tr>
+        </td>
+        <td>
+          <tr *ngIf="brot.glutenFree==true">✔️</tr>
+          <tr *ngIf="brot.glutenFree==false">❌</tr>
+        </td>
         </tr>
       </tbody>
     </table>
