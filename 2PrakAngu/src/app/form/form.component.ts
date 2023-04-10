@@ -62,6 +62,7 @@ export class FormComponent {
       glutenFree: gluten
     };
     this.brote.push(newBrot);
+    this.addBrotToLocalStorage(newBrot);
     this.clear();
   }
 
