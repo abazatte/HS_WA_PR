@@ -23,6 +23,8 @@ export class FormComponent {
   hero: any;
   constructor(private modal: NgbModal){
     console.log(this.brote);
+    this.resetLocalStorage();
+    console.log("localStorage feritg");
   }
 
   closeModal: string = '';
@@ -33,6 +35,7 @@ export class FormComponent {
   art: string = '';
   vegan: boolean = false;
   gluten: boolean = false;
+  
   
 
   openModal(content: any){
@@ -66,6 +69,28 @@ export class FormComponent {
     this.vegan = false;
     this.gluten = false;
   } 
+
+  public resetLocalStorage(){
+    localStorage.setItem('Brote', JSON.stringify(BrotJson));
+  }
+
+  public addBrotToLocalStorage(brot : Brot){
+    const brotJson = localStorage.getItem('Brote');
+    let brote: Brot[];
+    if(brotJson!== null){
+       brote = JSON.parse(brotJson);
+       brote.push(brot);
+       localStorage.setItem('Brote',JSON.stringify(brote));
+    } else{
+      console.log("addBrotToLocalStorage, brotJson war null");
+    }
+
+    
+  }
+
+  public removeBrotFromLocalStorage(brot : Brot){
+    const brotJson = localStorage.getItem('Brote');
+  }
 
 }
 
