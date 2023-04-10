@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import BrotJson from './form_init.json';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface Brot {
   id : Number;
@@ -17,8 +18,9 @@ interface Brot {
   styleUrls: ['./form.component.sass', '../css/style.css'],
 })
 export class FormComponent {
-  
   brote: Brot[] = BrotJson;
+  heroForm: any;
+  hero: any;
   constructor(private modal: NgbModal){
     console.log(this.brote);
   }
@@ -50,8 +52,9 @@ export class FormComponent {
       return  `with: ${reason}`;
     }
   }
-  public addBrot(id : number, name : string, year : number, art : string, vegan: boolean, gluten: boolean) {
 
+  public addBrot(id : number, name : string, year : number, art : string, vegan: boolean, gluten: boolean) {
+    console.log(id, name, year, art, vegan, gluten);
     this.clear();
   }
 
@@ -62,5 +65,7 @@ export class FormComponent {
     this.art = '';
     this.vegan = false;
     this.gluten = false;
-  }
+  } 
+
 }
+
