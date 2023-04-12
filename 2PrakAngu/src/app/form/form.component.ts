@@ -62,7 +62,7 @@ export class FormComponent {
       glutenFree: gluten
     };
     this.brote.push(newBrot);
-    this.addBrotToLocalStorage(newBrot);
+    this.saveToLocalStorage();
     this.clear();
   }
 
@@ -73,7 +73,6 @@ export class FormComponent {
     this.vegan = false;
     this.gluten = false;
   } 
-  powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
 
   public resetLocalStorage(){
     localStorage.setItem('Brote', JSON.stringify(BrotJson));
@@ -89,12 +88,36 @@ export class FormComponent {
     } else{
       console.log("addBrotToLocalStorage, brotJson war null");
     }
-
-    
   }
 
   public removeBrotFromLocalStorage(brot : Brot){
     const brotJson = localStorage.getItem('Brote');
+    let brotes: Brot[];
+    if(brotJson !== null) {
+      brotes = JSON.parse(brotJson);
+      brotes = brotes.filter(element => element !== brot);
+      console.log(brot);
+      console.log(brotes);
+      localStorage.setItem('Brote',JSON.stringify(brotes));
+    }
+  }
+
+  public saveToLocalStorage(){
+    localStorage.setItem('Brote',JSON.stringify(this.brote));
+  }
+
+  public edit(i: number){
+    console.log(i);
+  }
+
+  public delete(i: number){
+    let brot = this.brote.at(i);
+    if(brot !== undefined) {
+      
+      this.brote = this.brote.filter(broti => broti !== brot);
+      //brot aus lokal storage entfernen.
+      this.saveToLocalStorage();
+    }
   }
 
   brot: Brot = {
