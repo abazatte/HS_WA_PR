@@ -140,6 +140,15 @@ export class FormComponent {
 
 
 
+  public resetDisplayFromLocalStorage(){
+    this.resetLocalStorage();
+    const broteString = localStorage.getItem('Brote');
+    if(broteString !== null){
+      this.brote = JSON.parse(broteString);
+      console.log(this.brote);
+    }
+  }
+
   public delete(i: number) {
     let brot = this.brote.at(i);
     if (brot !== undefined) {
