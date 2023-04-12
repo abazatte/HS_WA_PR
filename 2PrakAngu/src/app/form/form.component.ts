@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import BrotJson from './form_init.json';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button'; 
+import { MatButtonModule } from '@angular/material/button';
 
 interface Brot {
-  name : String;
-  year : Number;
-  type : String;
-  vegan : boolean;
-  glutenFree : boolean;
+  name: string;
+  year: Number;
+  type: string;
+  vegan: boolean;
+  glutenFree: boolean;
 }
 
 @Component({
@@ -24,34 +24,59 @@ export class FormComponent {
   }
 
   closeModal: string = '';
+  isVisibleNoEdit: boolean = true;
+  isVisibleEdit: boolean = true;
+  numberEdit: number = 0;
 
-  name: string = '';
-  year: any = 0;
-  art: string = '';
-  vegan: boolean = false;
-  gluten: boolean = false;
-  
-  
-
-  openModal(content: any){
-    this.modal.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
-      this.closeModal = `Closded with: ${res}`;
-    },(res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+  openModal(content: any, edit: boolean, brotIndex: number) {
+    if (!edit) {
+      this.clear();
+      this.isVisibleNoEdit = true;
+      this.isVisibleEdit = false;
+      this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
+        this.closeModal = `Closded with: ${res}`;
+      }, (res) => {
+        this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
       });
+    }
+    else{
+      this.fill(this.brote.at(brotIndex) as Brot);
+      this.numberEdit = brotIndex;
+      this.isVisibleNoEdit = false;
+      this.isVisibleEdit = true;
+      this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
+        this.closeModal = `Closded with: ${res}`;
+      }, (res) => {
+        this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+      });
+      
+    }
   }
 
-  private getDismissReason(reason: any) : string {
+  private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
-  public addBrot(name : string, year : number, art : string, vegan: boolean, gluten: boolean) {
+  public edit(id: number, name: string, year: number, art: string, vegan: boolean, gluten: boolean) {
+    let newBrot: Brot = {
+      name: name,
+      year: year,
+      type: art,
+      vegan: vegan,
+      glutenFree: gluten
+    };
+
+    this.brote[id] = newBrot;
+    this.saveToLocalStorage();
+  }
+
+  public addBrot(name: string, year: number, art: string, vegan: boolean, gluten: boolean) {
     let newBrot: Brot = {
       name: name,
       year: year,
@@ -61,22 +86,29 @@ export class FormComponent {
     };
     this.brote.push(newBrot);
     this.saveToLocalStorage();
-    this.clear();
   }
 
   private clear() {
-    this.name = '';
-    this.year = 0;
-    this.art = '';
-    this.vegan = false;
-    this.gluten = false;
-  } 
+    this.brot.name = '';
+    this.brot.year = 0;
+    this.brot.type = '';
+    this.brot.vegan = false;
+    this.brot.glutenFree = false;
+  }
 
-  public resetLocalStorage(){
+  private fill(brot : Brot){
+    this.brot.name = brot.name;
+    this.brot.year = brot.year;
+    this.brot.type = brot.type;
+    this.brot.vegan = brot.vegan;
+    this.brot.glutenFree = brot.glutenFree;
+  }
+
+  public resetLocalStorage() {
     localStorage.setItem('Brote', JSON.stringify(BrotJson));
   }
 
-  public addBrotToLocalStorage(brot : Brot){
+  public addBrotToLocalStorage(brot: Brot) {
     const brotJson = localStorage.getItem('Brote');
     let brote: Brot[];
     if(brotJson!== null && brotJson!== undefined){
@@ -88,7 +120,7 @@ export class FormComponent {
     }
   }
 
-  public removeBrotFromLocalStorage(brot : Brot){
+  public removeBrotFromLocalStorage(brot: Brot) {
     const brotJson = localStorage.getItem('Brote');
     let brotes: Brot[];
     if(brotJson !== null && brotJson !== undefined) {
@@ -96,13 +128,15 @@ export class FormComponent {
       brotes = brotes.filter(element => element !== brot);
       console.log(brot);
       console.log(brotes);
-      localStorage.setItem('Brote',JSON.stringify(brotes));
+      localStorage.setItem('Brote', JSON.stringify(brotes));
     }
   }
 
-  public saveToLocalStorage(){
-    localStorage.setItem('Brote',JSON.stringify(this.brote));
+  public saveToLocalStorage() {
+    localStorage.setItem('Brote', JSON.stringify(this.brote));
   }
+
+
 
   public resetDisplayFromLocalStorage(){
     this.resetLocalStorage();
@@ -115,14 +149,10 @@ export class FormComponent {
     }
   }
 
-  public edit(i: number){
-    console.log(i);
-  }
-
-  public delete(i: number){
+  public delete(i: number) {
     let brot = this.brote.at(i);
-    if(brot !== undefined) {
-      
+    if (brot !== undefined) {
+
       this.brote = this.brote.filter(broti => broti !== brot);
       //brot aus lokal storage entfernen.
       this.saveToLocalStorage();
