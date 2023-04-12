@@ -41,7 +41,8 @@
   <!-- Modal -->
   <ng-template #brotData let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Brot hinzufügen</h4>
+      <h4 *ngIf="isVisibleNoEdit && !isVisibleEdit" class="modal-title" id="modal-basic-title">Brot hinzufügen</h4>
+      <h4 *ngIf="!isVisibleNoEdit && isVisibleEdit" class="modal-title" id="modal-basic-title">Brot ändern</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
@@ -76,7 +77,6 @@
               <input type="text" id="type" name="type" class="form-control" required [(ngModel)]="brot.type"
                 #type="ngModel">
               <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert">
-
                 <div *ngIf="type.errors?.['required']">
                   Art is required.
                 </div>
@@ -106,8 +106,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-      <button type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
+      <button *ngIf="!isVisibleNoEdit && isVisibleEdit" type="button" (click)="edit(numberEdit, name.value, year.value, type.value, vegan.value, glutenFree.value)" class="btn btn-primary">Save</button>
+      <button *ngIf="isVisibleNoEdit && !isVisibleEdit" type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
         class="btn btn-primary">Brot hinzufügen</button>
     </div>
   </ng-template>
@@ -142,7 +142,7 @@
           <tr *ngIf="brot.glutenFree==false">❌</tr>
         </td>
         <td>
-          <button class="btn btn-info" (click)="edit(i)">edit</button>
+          <button class="btn btn-info" (click)="openModal(brotData, true, i)">edit</button>
         </td>
         <td>
           <button class="btn btn-danger" (click)="delete(i)">del</button>
@@ -155,7 +155,7 @@
 
   <div class="container text-center">
     <!-- Button to open the modal -->
-    <button type="button" class="btn btn-primary" (click)="openModal(brotData)" data-bs-toggle="modal"
+    <button type="button" class="btn btn-primary" (click)="openModal(brotData, false, -1)" data-bs-toggle="modal"
       data-bs-target="#myModal">
       Brot hinzufügen
     </button>
