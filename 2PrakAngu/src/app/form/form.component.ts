@@ -18,7 +18,7 @@ interface Brot {
   styleUrls: ['./form.component.sass', '../css/style.css'],
 })
 export class FormComponent {
-  brote: Brot[] = BrotJson;
+  brote: Brot[] = BrotJson; //initial wird das json geladen
   constructor(private modal: NgbModal){
     this.loadFromLocalStorage();
   }
@@ -142,6 +142,9 @@ export class FormComponent {
     this.resetLocalStorage();
     this.loadFromLocalStorage();
   }
+  /**
+   * wenn vorhanden, werden die Brote aus LocalStorage reingeladen
+   */
   public loadFromLocalStorage(){
     const broteString = localStorage.getItem('Brote');
     if(broteString !== null && broteString !== undefined){

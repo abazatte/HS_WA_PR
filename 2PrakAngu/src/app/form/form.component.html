@@ -103,12 +103,17 @@
           </div>
         </div>
       </form>
+      <div>
+        <p>Fülle Alle Felder, um den Button zu aktivieren</p>
+  
+      </div>
     </div>
-
+    
     <div class="modal-footer">
+      
       <button *ngIf="!isVisibleNoEdit && isVisibleEdit" [disabled]="brotForm.invalid" type="button" (click)="edit(numberEdit, name.value, year.value, type.value, vegan.value, glutenFree.value)" class="btn btn-primary">Save</button>
       <button *ngIf="isVisibleNoEdit && !isVisibleEdit" [disabled]="brotForm.invalid" type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
-        class="btn btn-primary">Brot hinzufügen</button>
+        class="btn btn-primary ms-1">Brot hinzufügen</button>
     </div>
   </ng-template>
   <br>
