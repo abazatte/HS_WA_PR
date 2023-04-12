@@ -106,6 +106,15 @@ export class FormComponent {
     localStorage.setItem('Brote',JSON.stringify(this.brote));
   }
 
+  public resetDisplayFromLocalStorage(){
+    this.resetLocalStorage();
+    const broteString = localStorage.getItem('Brote');
+    if(broteString !== null){
+      this.brote = JSON.parse(broteString);
+      console.log(this.brote);
+    }
+  }
+
   public edit(i: number){
     console.log(i);
   }
