@@ -45,7 +45,7 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <form #brotForm="ngForm" appIdentityRevealed>
+      <form #brotForm="ngForm" id="brotForm" appIdentityRevealed>
         <div class="cross-validation"
           [class.cross-validation-error]="brotForm.errors?.['identityRevealed'] && (brotForm.touched || brotForm.dirty)">
           <div [hidden]="brotForm.submitted">
@@ -106,8 +106,9 @@
     </div>
 
     <div class="modal-footer">
+      <p>Fülle Alle Felder aus Um den Button zu aktivieren</p>
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-      <button type="button" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
+      <button type="button" [disabled]="brotForm.invalid" (click)="addBrot(name.value, year.value, type.value, vegan.value, glutenFree.value)"
         class="btn btn-primary">Brot hinzufügen</button>
     </div>
   </ng-template>

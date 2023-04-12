@@ -20,9 +20,7 @@ interface Brot {
 export class FormComponent {
   brote: Brot[] = BrotJson;
   constructor(private modal: NgbModal){
-    console.log(this.brote);
-    this.resetLocalStorage();
-    console.log("localStorage feritg");
+    this.loadFromLocalStorage();
   }
 
   closeModal: string = '';
@@ -81,7 +79,7 @@ export class FormComponent {
   public addBrotToLocalStorage(brot : Brot){
     const brotJson = localStorage.getItem('Brote');
     let brote: Brot[];
-    if(brotJson!== null){
+    if(brotJson!== null && brotJson!== undefined){
        brote = JSON.parse(brotJson);
        brote.push(brot);
        localStorage.setItem('Brote',JSON.stringify(brote));
@@ -93,7 +91,7 @@ export class FormComponent {
   public removeBrotFromLocalStorage(brot : Brot){
     const brotJson = localStorage.getItem('Brote');
     let brotes: Brot[];
-    if(brotJson !== null) {
+    if(brotJson !== null && brotJson !== undefined) {
       brotes = JSON.parse(brotJson);
       brotes = brotes.filter(element => element !== brot);
       console.log(brot);
@@ -108,10 +106,12 @@ export class FormComponent {
 
   public resetDisplayFromLocalStorage(){
     this.resetLocalStorage();
+    this.loadFromLocalStorage();
+  }
+  public loadFromLocalStorage(){
     const broteString = localStorage.getItem('Brote');
-    if(broteString !== null){
+    if(broteString !== null && broteString !== undefined){
       this.brote = JSON.parse(broteString);
-      console.log(this.brote);
     }
   }
 
