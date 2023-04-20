@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { DataserviceService } from '../services/dataservice.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,5 +11,5 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   imports: [IonicModule, ExploreContainerComponent],
 })
 export class SettingsPage {
-  constructor() {}
+  constructor(private dataservice: DataserviceService) {}
 }
