@@ -15,7 +15,9 @@ interface Brot {
 export class DataserviceService {
 
   brote : Brot[] = BrotJson;
-  constructor() { }
+  constructor() {
+    this.loadFromLocalStorage();
+  }
 
   public addBrot(name: string, year: number, art: string, vegan: boolean, gluten: boolean) {
     let newBrot: Brot = {
@@ -59,10 +61,15 @@ export class DataserviceService {
     localStorage.setItem('Brote', JSON.stringify(this.brote));
   }
 
+  /**
+   * wenn vorhanden, werden die Brote aus LocalStorage reingeladen
+   */
   public loadFromLocalStorage(){
     const broteString = localStorage.getItem('Brote');
     if(broteString){ //wenn leerer string dann kommt da auch null raus
       this.brote = JSON.parse(broteString);
+    } else {
+      this.resetDisplayFromLocalStorage();
     }
   }
 
