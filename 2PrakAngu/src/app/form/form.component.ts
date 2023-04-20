@@ -33,24 +33,17 @@ export class FormComponent {
       this.clear();
       this.isVisibleNoEdit = true;
       this.isVisibleEdit = false;
-      this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
-        this.closeModal = `Closded with: ${res}`;
-      }, (res) => {
-        this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-      });
-    }
-    else{
+    } else {
       this.fill(this.brote.at(brotIndex) as Brot);
       this.numberEdit = brotIndex;
       this.isVisibleNoEdit = false;
       this.isVisibleEdit = true;
-      this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
+    } 
+    this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
         this.closeModal = `Closded with: ${res}`;
       }, (res) => {
         this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
       });
-      
-    }
   }
 
   private getDismissReason(reason: any): string {
@@ -65,10 +58,10 @@ export class FormComponent {
 
   public edit(id: number, name: string, year: number, art: string, vegan: boolean, gluten: boolean) {
     let newBrot: Brot = {
-      name: name,
-      year: year,
+      name,
+      year,
       type: art,
-      vegan: vegan,
+      vegan,
       glutenFree: gluten
     };
 
@@ -78,10 +71,10 @@ export class FormComponent {
 
   public addBrot(name: string, year: number, art: string, vegan: boolean, gluten: boolean) {
     let newBrot: Brot = {
-      name: name,
-      year: year,
+      name,
+      year,
       type: art,
-      vegan: vegan,
+      vegan,
       glutenFree: gluten
     };
     this.brote.push(newBrot);
@@ -102,6 +95,7 @@ export class FormComponent {
     this.brot.type = brot.type;
     this.brot.vegan = brot.vegan;
     this.brot.glutenFree = brot.glutenFree;
+    //this.brot = { ...brot }
   }
 
   public resetLocalStorage() {
@@ -111,7 +105,7 @@ export class FormComponent {
   public addBrotToLocalStorage(brot: Brot) {
     const brotJson = localStorage.getItem('Brote');
     let brote: Brot[];
-    if(brotJson!== null && brotJson!== undefined){
+    if(brotJson){
        brote = JSON.parse(brotJson);
        brote.push(brot);
        localStorage.setItem('Brote',JSON.stringify(brote));
@@ -123,7 +117,7 @@ export class FormComponent {
   public removeBrotFromLocalStorage(brot: Brot) {
     const brotJson = localStorage.getItem('Brote');
     let brotes: Brot[];
-    if(brotJson !== null && brotJson !== undefined) {
+    if(brotJson) {
       brotes = JSON.parse(brotJson);
       brotes = brotes.filter(element => element !== brot);
       console.log(brot);
@@ -136,8 +130,6 @@ export class FormComponent {
     localStorage.setItem('Brote', JSON.stringify(this.brote));
   }
 
-
-
   public resetDisplayFromLocalStorage(){
     this.resetLocalStorage();
     this.loadFromLocalStorage();
@@ -147,17 +139,16 @@ export class FormComponent {
    */
   public loadFromLocalStorage(){
     const broteString = localStorage.getItem('Brote');
-    if(broteString !== null && broteString !== undefined){ //wenn leerer string dann kommt da auch null raus
+    if(broteString){ //wenn leerer string dann kommt da auch null raus
       this.brote = JSON.parse(broteString);
     }
   }
 
   public delete(i: number) {
     let brot = this.brote.at(i);
-    if (brot !== undefined) {
-
+    if (brot) {
       this.brote = this.brote.filter(broti => broti !== brot);
-      //brot aus lokal storage entfernen.
+      //brot aus lokal storage entfernen. .splice
       this.saveToLocalStorage();
     }
   }
@@ -170,4 +161,3 @@ export class FormComponent {
     glutenFree: false
   };
 }
-
