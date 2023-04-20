@@ -13,5 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Settings Page"></app-explore-container>
+  <ion-item>
+    <ion-label>
+        Hiermit wird die Tabelle auf ihren ursprungszustand zurückgesetzt.
+    </ion-label>
+    <ion-button (click)="resetLocalStorage()">
+      Reset
+    </ion-button>
+  
+  </ion-item>
+  
 </ion-content>

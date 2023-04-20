@@ -12,4 +12,8 @@ import { DataserviceService } from '../services/dataservice.service';
 })
 export class SettingsPage {
   constructor(private dataservice: DataserviceService) {}
+
+  resetLocalStorage(){
+    this.dataservice.resetLocalStorage();
+  }
 }
