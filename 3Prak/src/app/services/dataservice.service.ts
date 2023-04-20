@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import BrotJson from './form_init.json';
 
-interface Brot {
+export interface Brot {
   name: string;
   year: Number;
   type: string;
@@ -14,7 +14,7 @@ interface Brot {
 })
 export class DataserviceService {
 
-  brote : Brot[] = BrotJson;
+  public brote : Brot[] = BrotJson;
   constructor() {
     this.loadFromLocalStorage();
   }

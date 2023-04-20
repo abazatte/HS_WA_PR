@@ -1,16 +1,25 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { CommonModule } from '@angular/common';
+import { DataserviceService , Brot } from '../services/dataservice.service';
+
 
 @Component({
   selector: 'app-data',
   templateUrl: 'data.page.html',
   styleUrls: ['data.page.scss'],
   standalone: true,
-  imports: [IonicModule, ExploreContainerComponent]
+  imports: [IonicModule, ExploreContainerComponent, CommonModule]
 })
 export class DataPage {
 
-  constructor() {}
+
+
+  constructor(private dataservice : DataserviceService ) {}
+
+  getBrote() : Brot[]{
+    return this.dataservice.brote;
+  }
 
 }
