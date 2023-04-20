@@ -1,0 +1,37 @@
+[{
+    "name" : "Pumpernickel",
+    "year" : 1955,
+    "type" : "Roggenvollkornbrot",
+    "vegan" : true,
+    "glutenFree" : true
+},
+{
+    "name" : "Milchbrötchen",
+    "year" : 1802,
+    "type" : "Weizenbrot",
+    "vegan" : false,
+    "glutenFree" : false
+},
+{
+    "name" : "Weltmeisterbrot",
+    "year" : 1956,
+    "type" : "Weizenmischbrot",
+    "vegan" : true,
+    "glutenFree" : false
+},
+{
+    "name" : "Martinsgans",
+    "year" : 1942,
+    "type" : "Weizenbrot",
+    "vegan" : false,
+    "glutenFree" : false
+},
+{
+    "name" : "Haferstullen",
+    "year" : 2010,
+    "type" : "Weizenmischbrot",
+    "vegan" : true,
+    "glutenFree" : false
+}
+
+]
