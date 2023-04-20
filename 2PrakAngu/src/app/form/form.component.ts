@@ -147,7 +147,7 @@ export class FormComponent {
    */
   public loadFromLocalStorage(){
     const broteString = localStorage.getItem('Brote');
-    if(broteString !== null && broteString !== undefined){
+    if(broteString !== null && broteString !== undefined){ //wenn leerer string dann kommt da auch null raus
       this.brote = JSON.parse(broteString);
     }
   }
