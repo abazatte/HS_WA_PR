@@ -3,6 +3,8 @@ import { Brot } from '../services/dataservice.service';
 import { ModalController } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+//https://stackoverflow.com/questions/38892771/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input 
+//forms module ist für ngmodel
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IonInput } from '@ionic/angular';
@@ -20,6 +22,7 @@ export class BrotModalComponent  implements OnInit {
   
   brot: Brot;
 
+  //https://stackoverflow.com/questions/52012447/ionic-4-how-to-retrieve-data-passed-to-a-modal
   @Input()brotVonListe : Brot | undefined;
 
   isVisibleNoEdit: boolean = true;
@@ -44,7 +47,7 @@ export class BrotModalComponent  implements OnInit {
       this.brot.glutenFree = this.brotVonListe.glutenFree;
     }
      
-    this.cd.detectChanges();
+    this.cd.detectChanges(); //weil ngafterviewinit die bindings ändert nachdem sie überprüft wurden
   }
 
   cancel(){
