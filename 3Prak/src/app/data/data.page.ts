@@ -27,6 +27,6 @@ export class DataPage {
   }
 
   delete(index: number) {
-    console.log("delete " + index);
+    this.dataservice.delete(index);
   }
 }

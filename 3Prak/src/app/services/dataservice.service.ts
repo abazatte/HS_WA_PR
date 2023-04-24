@@ -53,7 +53,7 @@ export class DataserviceService {
     }
   }
 
-  resetLocalStorage(){
+  public resetLocalStorage(){
     localStorage.setItem('Brote', JSON.stringify(BrotJson));
   }
 
