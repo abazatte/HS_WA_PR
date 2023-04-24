@@ -14,6 +14,6 @@ export class SettingsPage {
   constructor(private dataservice: DataserviceService) {}
 
   resetLocalStorage(){
-    this.dataservice.resetLocalStorage();
+    this.dataservice.resetDisplayFromLocalStorage();
   }
 }
