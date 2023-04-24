@@ -14,13 +14,15 @@
   </ion-header>
 
   <ion-list>
-    <ion-item *ngFor="let item of getBrote()">
+    <ion-item *ngFor="let item of getBrote(); index as i">
       <ion-label>
         <h2>{{ item.name }}</h2>
         <p>Year: {{ item.year }}</p>
         <p>Type: {{ item.type }}</p>
         <p>Vegan: {{ item.vegan ? '✔️' : '❌' }}</p>
         <p>Gluten-free: {{ item.glutenFree ? '✔️' : '❌' }}</p>
+        <ion-button (click)="edit(i)">Edit</ion-button>
+        <ion-button (click)="delete(i)">Delete</ion-button>
       </ion-label>
 
     </ion-item>

@@ -22,4 +22,11 @@ export class DataPage {
     return this.dataservice.brote;
   }
 
+  edit(index: number){
+    console.log("edit " + index);
+  }
+
+  delete(index: number) {
+    console.log("delete " + index);
+  }
 }
