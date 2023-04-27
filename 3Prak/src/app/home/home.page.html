@@ -13,5 +13,24 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Homepage"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-item color="primary" text-center>
+            <ion-label class="header">BreadStar!</ion-label>
+          </ion-item>
+          <ion-card-content>
+            <p>Diese Anwendung handelt um Brote.</p>
+            <p>Hier können Nutzer Ihre Brote hinzufügen, bearbeiten und löschen.</p>
+            <p>Die Brote werden im LocalStorage abgespeichert. Initial werden vorgefertigte Daten eingetragen.</p>
+            <p>Diese Daten können im späteren Verlauf wieder zurückgesetzt werden um wieder auf dem Initialstand zu kommen.</p>
+            
+            <img src="../../assets/images/kneten.jpg">
+            <img src="../../assets/images/bread2.jpg">
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
