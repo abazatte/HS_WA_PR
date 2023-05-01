@@ -11,13 +11,30 @@
 </ion-header>
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-input labelPlacement="stacked" label="Name des Brotes" [(ngModel)]="brot.name" placeholder="z.B. Weizenstullen"></ion-input>
+    <ion-input labelPlacement="stacked" label="Name des Brotes" [(ngModel)]="brot.name" placeholder="z.B. Weizenstullen" #name="ngModel"></ion-input>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+
+      <div *ngIf="name.errors?.['required']">
+        Name is required.
+      </div>
+    </div>
   </ion-item>
   <ion-item>
-    <ion-input labelPlacement="stacked" label="Erfindungsjahr" [(ngModel)]="brot.year" type="number" placeholder="z.B. 1990"></ion-input>
+    <ion-input labelPlacement="stacked" label="Erfindungsjahr" [(ngModel)]="brot.year" type="number" placeholder="z.B. 1990" #year="ngModel"></ion-input>
+    <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert">
+
+      <div *ngIf="year.errors?.['required']">
+        Erfindungsjahr is required.
+      </div>
+    </div>
   </ion-item>
   <ion-item>
-    <ion-input labelPlacement="stacked" label="Art" [(ngModel)]="brot.type" placeholder="z.B. Weizenbrot"></ion-input>
+    <ion-input labelPlacement="stacked" label="Art" [(ngModel)]="brot.type" placeholder="z.B. Weizenbrot" #type="ngModel"></ion-input>
+    <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert">
+      <div *ngIf="type.errors?.['required']">
+        Art is required.
+      </div>
+    </div>
   </ion-item>
   <ion-item>
     <ion-toggle [(ngModel)]="brot.vegan">Vegan</ion-toggle>
