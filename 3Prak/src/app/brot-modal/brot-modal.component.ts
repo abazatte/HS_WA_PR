@@ -24,6 +24,7 @@ export class BrotModalComponent  implements OnInit {
 
   //https://stackoverflow.com/questions/52012447/ionic-4-how-to-retrieve-data-passed-to-a-modal
   @Input()brotVonListe : Brot | undefined;
+  @Input()isAdd: boolean | undefined;
 
   isVisibleNoEdit: boolean = true;
 
@@ -39,7 +40,7 @@ export class BrotModalComponent  implements OnInit {
   }
 
   ngAfterViewInit(){
-    if(this.brotVonListe){
+    if(this.brotVonListe && !this.isAdd){
       this.brot.name = this.brotVonListe.name; 
       this.brot.year = this.brotVonListe.year; 
       this.brot.type = this.brotVonListe.type; 

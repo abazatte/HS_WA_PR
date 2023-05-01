@@ -3,6 +3,9 @@
     <ion-title>
       Data
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="add()" fill="solid" color="primary"><ion-icon name="add"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +25,9 @@
         <p>Vegan: {{ item.vegan ? '✔️' : '❌' }}</p>
         <p>Gluten-free: {{ item.glutenFree ? '✔️' : '❌' }}</p>
         <ion-button (click)="edit(i)">Edit</ion-button>
-        <ion-button (click)="delete(i)">Delete</ion-button>
+        <ion-button id="delete-alert{{i}}">Delete</ion-button>
+        <ion-alert trigger="delete-alert{{i}}" header="Sind Sie sich sicher?" [buttons]="alertButtons"
+          (didDismiss)="delete($event, i)"></ion-alert>
       </ion-label>
 
     </ion-item>
