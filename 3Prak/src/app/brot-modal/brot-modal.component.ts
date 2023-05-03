@@ -28,11 +28,6 @@ export class BrotModalComponent  implements OnInit {
   @Input()isAdd: boolean | undefined;
 
   isVisibleNoEdit: boolean = true;
-  ionicForm: FormGroup = this.formBuilder.group({
-    brotName: ['', [Validators.required, Validators.minLength(2)]],
-    brotYear: ['', [Validators.required, Validators.min(0)]],
-    brotType: ['', [Validators.required, Validators.minLength(2)]],
-  });
 
   constructor(private modalCtrl: ModalController, private cd: ChangeDetectorRef, public formBuilder: FormBuilder) { 
     this.brot = {
@@ -67,11 +62,11 @@ export class BrotModalComponent  implements OnInit {
     return this.modalCtrl.dismiss(this.brot);
   }
 
-  submit(){
-    this.isSubmitted = true;
-    if (!this.ionicForm.valid) {
-      this.confirm();
-    } 
+  /*
+  checkValid(name: any, year: any, type: any){
+    return (!(name.getAttribute('class') && name.getAttribute('class').indexOf('ion-valid') !== -1) 
+            && !(year.getAttribute('class') && year.getAttribute('class').indexOf('ion-valid') !== -1)
+            && !(type.getAttribute('class') && type.getAttribute('class').indexOf('ion-valid') !== -1));
   }
-
+*/
 }

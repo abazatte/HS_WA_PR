@@ -5,38 +5,24 @@
     </ion-buttons>
     <ion-title>Welcome</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="submit()" [strong]="true">Confirm</ion-button>
+      <ion-button (click)="confirm()" ng-disabled="addBrot.$invalid" [strong]="true">Confirm</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+  <form name="addBrot">
+
     <ion-item>
-      <ion-input labelPlacement="stacked" formControlName="brotName" label="Name des Brotes" [(ngModel)]="brot.name" placeholder="z.B. Weizenstullen" #name="ngModel" required></ion-input>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brotName.errors?.required">
-        Name wird benötigt.
-      </span>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brotName.errors?.minlength">
-        Name sollte 2 chars minimum haben.
-      </span>
+      <ion-input name="brotName" labelPlacement="stacked" label="Name des Brotes" [(ngModel)]="brot.name" helperText="Enter a valid Bread-Name"
+      errorText="Invalid Name" placeholder="z.B. Weizenstullen"  required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input labelPlacement="stacked" formControlName="brotYear" label="Erfindungsjahr" [(ngModel)]="brot.year" type="number" placeholder="z.B. 1990" #year="ngModel" required></ion-input>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brotYear.errors?.required">
-        Jahr wird benötigt.
-      </span>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brotYear.errors?.min">
-        Jahr sollte minimum 0 sein.
-      </span>
+      <ion-input name="brotJahr" labelPlacement="stacked" label="Erfindungsjahr" [(ngModel)]="brot.year"  helperText="Enter a valid Year"
+      errorText="Invalid Year" type="number" placeholder="z.B. 1990"  required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input labelPlacement="stacked" formControlName="brotType" label="Art" [(ngModel)]="brot.type" placeholder="z.B. Weizenbrot" #type="ngModel" required></ion-input>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brotType.errors?.required">
-        Typ wird benötigt.
-      </span>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brotType.errors?.minlength">
-        Typ sollte 2 chars minimum haben.
-      </span>
+      <ion-input name="brotTyp" labelPlacement="stacked" label="Art" [(ngModel)]="brot.type"  helperText="Enter a valid Type"
+      errorText="Invalid Type"placeholder="z.B. Weizenbrot"  required></ion-input>
     </ion-item>
     <ion-item>
       <ion-checkbox [(ngModel)]="brot.vegan">Vegan</ion-checkbox>
@@ -44,6 +30,6 @@
     <ion-item>
       <ion-checkbox [(ngModel)]="brot.glutenFree">Glutenfrei</ion-checkbox>
     </ion-item>
+    
   </form>
-  
 </ion-content>
