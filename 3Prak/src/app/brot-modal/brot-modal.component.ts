@@ -18,7 +18,7 @@ import { ChangeDetectorRef } from '@angular/core';
   imports:[IonicModule,FormsModule,ReactiveFormsModule]
 })
 export class BrotModalComponent  implements OnInit {
-  ngOnInit() {}
+  
   
   brot: Brot;
   isSubmitted:boolean = false;
@@ -28,6 +28,7 @@ export class BrotModalComponent  implements OnInit {
   @Input()isAdd: boolean | undefined;
 
   isVisibleNoEdit: boolean = true;
+  addBrotForm: FormGroup;
 
   constructor(private modalCtrl: ModalController, private cd: ChangeDetectorRef, public formBuilder: FormBuilder) { 
     this.brot = {
@@ -38,6 +39,17 @@ export class BrotModalComponent  implements OnInit {
       glutenFree: false
     };
 
+    this.addBrotForm = this.formBuilder.group({
+      brotName: ['', Validators.required],
+      brotJahr: ['', Validators.required],
+      brotTyp: ['', Validators.required],
+      vegan: [false],
+      glutenFree: [false]
+    });
+  }
+
+  ngOnInit(){
+    
   }
 
   ngAfterViewInit(){

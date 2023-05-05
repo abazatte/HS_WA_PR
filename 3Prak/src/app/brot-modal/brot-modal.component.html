@@ -5,30 +5,30 @@
     </ion-buttons>
     <ion-title>Welcome</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" ng-disabled="addBrot.$invalid" [strong]="true">Confirm</ion-button>
+      <ion-button (click)="confirm()" [disabled]="addBrotForm.invalid" [strong]="true">Confirm</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <form name="addBrot">
+  <form name="addBrot" [formGroup]="addBrotForm">
 
     <ion-item>
-      <ion-input name="brotName" labelPlacement="stacked" label="Name des Brotes" [(ngModel)]="brot.name" helperText="Enter a valid Bread-Name"
-      errorText="Invalid Name" placeholder="z.B. Weizenstullen"  required></ion-input>
+      <ion-input formControlName="brotName" name="brotName" labelPlacement="stacked" label="Name des Brotes" [(ngModel)]="brot.name" helperText="Enter a valid Bread-Name"
+      errorText="Invalid Name" placeholder="z.B. Weizenstullen"  required ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input name="brotJahr" labelPlacement="stacked" label="Erfindungsjahr" [(ngModel)]="brot.year"  helperText="Enter a valid Year"
-      errorText="Invalid Year" type="number" placeholder="z.B. 1990"  required></ion-input>
+      <ion-input formControlName="brotJahr" name="brotJahr" labelPlacement="stacked" label="Erfindungsjahr" [(ngModel)]="brot.year"  helperText="Enter a valid Year"
+      errorText="Invalid Year" type="number" placeholder="z.B. 1990"  required ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input name="brotTyp" labelPlacement="stacked" label="Art" [(ngModel)]="brot.type"  helperText="Enter a valid Type"
-      errorText="Invalid Type"placeholder="z.B. Weizenbrot"  required></ion-input>
+      <ion-input formControlName="brotTyp" name="brotTyp" labelPlacement="stacked" label="Art" [(ngModel)]="brot.type"  helperText="Enter a valid Type"
+      errorText="Invalid Type"placeholder="z.B. Weizenbrot"  required ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-checkbox [(ngModel)]="brot.vegan">Vegan</ion-checkbox>
+      <ion-checkbox formControlName="vegan" [(ngModel)]="brot.vegan">Vegan</ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-checkbox [(ngModel)]="brot.glutenFree">Glutenfrei</ion-checkbox>
+      <ion-checkbox formControlName="glutenFree" [(ngModel)]="brot.glutenFree">Glutenfrei</ion-checkbox>
     </ion-item>
     
   </form>
