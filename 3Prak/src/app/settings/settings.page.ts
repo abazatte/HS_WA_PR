@@ -13,7 +13,18 @@ import { DataserviceService } from '../services/dataservice.service';
 export class SettingsPage {
   constructor(private dataservice: DataserviceService) {}
 
-  resetLocalStorage(){
-    this.dataservice.resetDisplayFromLocalStorage();
+  public alertButtons = [
+    {
+      text: 'Abbrechen',
+      role: 'cancel'
+    },
+    {
+      text: 'Resetten',
+      role: 'confirm'
+    }
+  ];
+
+  resetLocalStorage(ev: any){
+    if(`${ev.detail.role}` === 'confirm') this.dataservice.resetDisplayFromLocalStorage();
   }
 }

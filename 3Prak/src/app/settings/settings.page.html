@@ -17,10 +17,12 @@
     <ion-label>
         Hiermit wird die Tabelle auf ihren ursprungszustand zurückgesetzt.
     </ion-label>
-    <ion-button (click)="resetLocalStorage()">
+    <ion-button id="reset-alert">
       Reset
     </ion-button>
   
+    <ion-alert trigger="reset-alert" header="Möchten Sie den Webspeicher resetten?" [buttons]="alertButtons"
+        (didDismiss)="resetLocalStorage($event)"></ion-alert>
   </ion-item>
   
 </ion-content>
