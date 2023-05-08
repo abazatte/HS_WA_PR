@@ -22,12 +22,11 @@ export class BrotModalComponent  implements OnInit {
   
   brot: Brot;
   isSubmitted:boolean = false;
-
+  titel: string = '';
   //https://stackoverflow.com/questions/52012447/ionic-4-how-to-retrieve-data-passed-to-a-modal
   @Input()brotVonListe : Brot | undefined;
   @Input()isAdd: boolean | undefined;
 
-  isVisibleNoEdit: boolean = true;
   addBrotForm: FormGroup;
 
   constructor(private modalCtrl: ModalController, private cd: ChangeDetectorRef, public formBuilder: FormBuilder) { 
@@ -59,8 +58,11 @@ export class BrotModalComponent  implements OnInit {
       this.brot.type = this.brotVonListe.type; 
       this.brot.vegan = this.brotVonListe.vegan;
       this.brot.glutenFree = this.brotVonListe.glutenFree;
+      this.titel = 'Brot editieren';
+    } else {
+      this.titel = 'Brot hinzufügen';
     }
-     
+    
     this.cd.detectChanges(); //weil ngafterviewinit die bindings ändert nachdem sie überprüft wurden
   }
 
