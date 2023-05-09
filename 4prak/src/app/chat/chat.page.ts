@@ -9,8 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class ChatPage {
   chats: Observable<any[]>;
+  message: string;
   constructor(private firemessage: FireMessageService) {
     this.chats = this.firemessage.getChats();
+    this.message = "";
   }
 
 }

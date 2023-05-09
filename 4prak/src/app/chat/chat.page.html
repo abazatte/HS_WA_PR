@@ -16,4 +16,10 @@
     </ion-card-content>
     <p> {{ chat.timestamp }}</p>
   </ion-card>
+  <ion-item>
+    <ion-input placeholder="Nachricht eingeben..." [(ngModel)]="message"></ion-input>
+    <ion-button>
+      <ion-icon aria-hidden="true" name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
 </ion-content>
