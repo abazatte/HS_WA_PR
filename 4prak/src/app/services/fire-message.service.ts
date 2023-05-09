@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, orderBy, query, serverTimestamp } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,5 +17,13 @@ export class FireMessageService {
 
   public getChats() {
     return this.chats;
+  }
+
+  public async addMessage(author: string, text: string) {
+    const docRef = await addDoc(collection(this.firestore, 'room_0'), {
+      'author': author,
+      'text': text,
+      'timestamp': serverTimestamp()
+    })
   }
 }
