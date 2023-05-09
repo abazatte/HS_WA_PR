@@ -15,4 +15,7 @@ export class ChatPage {
     this.message = "";
   }
 
+  sendMessage(){
+    this.firemessage.addMessage("John Titor", this.message);
+  }
 }
