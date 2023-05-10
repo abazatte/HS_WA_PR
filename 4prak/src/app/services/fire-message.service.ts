@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, orderBy, query, serverTimestamp } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class FireMessageService {
   username: string = 'default';
 
   constructor(private firestore: Firestore) {
-    const coll = collection(firestore, 'room_0');
+    const coll = collection(firestore, environment.room);
     const q = query(coll, orderBy('timestamp', 'desc'));
     //es wird die map funktion benutzt, um die hereinkommende observable bei jedem update zu verändern und das datum zu verschönern
     this.chats = collectionData(q).pipe(
@@ -38,7 +39,7 @@ export class FireMessageService {
   }
 
   public async addMessage(author: string, text: string) {
-    const docRef = await addDoc(collection(this.firestore, 'room_0'), {
+    const docRef = await addDoc(collection(this.firestore, environment.room), {
       'author': author,
       'text': text,
       'timestamp': serverTimestamp()
