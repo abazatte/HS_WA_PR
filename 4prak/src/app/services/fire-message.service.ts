@@ -14,6 +14,7 @@ export class FireMessageService {
   constructor(private firestore: Firestore) {
     const coll = collection(firestore, 'room_0');
     const q = query(coll, orderBy('timestamp', 'desc'));
+    //es wird die map funktion benutzt, um die hereinkommende observable bei jedem update zu verändern und das datum zu verschönern
     this.chats = collectionData(q).pipe(
       map(list => {
         const modifiedList = list.map(item => {
