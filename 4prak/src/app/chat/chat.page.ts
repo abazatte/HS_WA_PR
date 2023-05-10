@@ -16,6 +16,6 @@ export class ChatPage {
   }
 
   sendMessage(){
-    this.firemessage.addMessage("John Titor", this.message);
+    this.firemessage.addMessage(this.firemessage.getUsername(), this.message);
   }
 }

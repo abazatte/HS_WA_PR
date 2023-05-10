@@ -9,7 +9,7 @@ import { map } from 'rxjs';
 })
 export class FireMessageService {
   chats: Observable<any[]>;
-  //beautifiedChats : Observable<any[]>;
+  username: string = 'default';
 
   constructor(private firestore: Firestore) {
     const coll = collection(firestore, 'room_0');
@@ -42,5 +42,13 @@ export class FireMessageService {
       'text': text,
       'timestamp': serverTimestamp()
     })
+  }
+
+  public setUsername(username: string){
+    this.username = username;
+  }
+
+  public getUsername() {
+    return this.username;
   }
 }
