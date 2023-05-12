@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card *ngFor="let chat of chats | async">
+  <ion-card *ngFor="let chat of beautifiedChats | async">
     <ion-card-header>
       <ion-card-subtitle>
         {{ chat.author }}
