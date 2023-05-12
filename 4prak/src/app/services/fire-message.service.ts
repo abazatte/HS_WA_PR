@@ -31,8 +31,8 @@ export class FireMessageService {
     })
   }
 
-  public setUsername(username: string){
-    console.log('setUsername: '+this.checkIsValid(username)) 
+  public async setUsername(username: string){
+    console.log('setUsername: '+ await this.checkIsValid(username)) 
     //this.username = username;
   }
 
@@ -52,7 +52,7 @@ export class FireMessageService {
     }
   }
 
-  private checkIsValid(username: string) {
+  private async checkIsValid2(username: string) {
     let bool = true;
     // this.chats.forEach(element => {
     //   element.forEach(item => {
