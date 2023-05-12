@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, orderBy, query, serverTimestamp } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,22 +15,7 @@ export class FireMessageService {
     const coll = collection(firestore, environment.room);
     const q = query(coll, orderBy('timestamp', 'desc'));
     //es wird die map funktion benutzt, um die hereinkommende observable bei jedem update zu verändern und das datum zu verschönern
-    this.chats = collectionData(q).pipe(
-      map(list => {
-        const modifiedList = list.map(item => {
-          //quelle: https://www.epochconverter.com/programming/#javascript
-          //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
-          let myDate = new Date (item['timestamp']['seconds']*1000);
-          const modifiedItem = {
-            "author" : item['author'],
-            "text" : item['text'],
-            "timestamp" : myDate.toLocaleString()
-          }
-          return modifiedItem;
-        });
-        return modifiedList;
-      })
-    );
+    this.chats = collectionData(q);
   }
 
   public getChats() {
@@ -53,6 +37,18 @@ export class FireMessageService {
 
   public getUsername() {
     return this.username;
+  }
+
+  private saveUsernameToLocalStorage(username: string){
+    if(username !== null && username !== undefined && username != ''){
+      localStorage.setItem('username',username);
+    }
+  }
+  private loadUsernameFromLocalStorage(){
+    let fromLS = localStorage.getItem('username');
+    if(fromLS !== null && fromLS !== undefined && fromLS != ''){
+      this.username = fromLS;
+    }
   }
 
   private checkIsValid(username: string) {
