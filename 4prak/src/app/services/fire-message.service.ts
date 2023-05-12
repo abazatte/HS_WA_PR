@@ -78,3 +78,4 @@ export class FireMessageService {
     return bool;
   }
 }
+
