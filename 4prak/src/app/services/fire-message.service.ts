@@ -17,6 +17,7 @@ export class FireMessageService {
     const q = query(coll, orderBy('timestamp', 'desc'));
     //es wird die map funktion benutzt, um die hereinkommende observable bei jedem update zu verändern und das datum zu verschönern
     this.chats = collectionData(q);
+    this.loadUsernameFromLocalStorage();
   }
 
   public getChats() {
@@ -34,6 +35,7 @@ export class FireMessageService {
   public async setUsername(username: string) : Promise<boolean>{
     if (await this.checkIsValid(username)) {
       this.username = username;
+      this.saveUsernameToLocalStorage(username);
       return true;
     } else {
       return false;
@@ -53,6 +55,8 @@ export class FireMessageService {
     let fromLS = localStorage.getItem('username');
     if(fromLS !== null && fromLS !== undefined && fromLS != ''){
       this.username = fromLS;
+    } else {
+      this.username = 'default';
     }
   }
 
