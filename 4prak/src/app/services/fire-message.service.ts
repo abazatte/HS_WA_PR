@@ -72,7 +72,7 @@ export class FireMessageService {
     })
     return bool;
   }
-
+//geht nicht
   private async checkIsValid2(username: string) {
     let bool = true;
     this.chats.pipe(
