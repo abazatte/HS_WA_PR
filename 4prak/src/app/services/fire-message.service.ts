@@ -47,10 +47,34 @@ export class FireMessageService {
   }
 
   public setUsername(username: string){
+    console.log('setUsername: '+this.checkIsValid(username)) 
     this.username = username;
   }
 
   public getUsername() {
     return this.username;
+  }
+
+  private checkIsValid(username: string) {
+    let bool = true;
+    // this.chats.forEach(element => {
+    //   element.forEach(item => {
+    //     if (item.author === username) {
+    //       bool = false;
+    //       console.log('in abfrage: '+bool);
+    //       return false;
+    //     } else {
+    //       continue;
+    //     }
+    //   })
+    // });
+    this.chats.pipe(map(chat => {
+      const modifiedList = chat.map(item => {
+        console.log(item);
+        if(item.author === username) bool = false;
+      })
+    }))
+    console.log('in methode vor return: '+bool);
+    return bool;
   }
 }
