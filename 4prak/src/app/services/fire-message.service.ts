@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, orderBy, query, serverTimestamp } from '@angular/fire/firestore';
+
 import { Observable, from, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -32,7 +33,7 @@ export class FireMessageService {
 
   public setUsername(username: string){
     console.log('setUsername: '+this.checkIsValid(username)) 
-    this.username = username;
+    //this.username = username;
   }
 
   public getUsername() {
@@ -64,12 +65,15 @@ export class FireMessageService {
     //     }
     //   })
     // });
-    this.chats.pipe(map(chat => {
-      const modifiedList = chat.map(item => {
-        console.log(item);
-        if(item.author === username) bool = false;
-      })
-    }))
+    this.chats.pipe(
+      map(chat => chat.some(item => item.author === username))
+    ).subscribe(isIncluded => {
+      console.log("includedd?? " + isIncluded);
+      if(!isIncluded){
+        this.username=username;
+      }
+    });
+    
     console.log('in methode vor return: '+bool);
     return bool;
   }
