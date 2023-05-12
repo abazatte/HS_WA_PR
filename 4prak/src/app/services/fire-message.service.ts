@@ -24,9 +24,9 @@ export class FireMessageService {
 
   public async addMessage(author: string, text: string) {
     const docRef = await addDoc(collection(this.firestore, environment.room), {
-      'author': author,
-      'text': text,
-      'timestamp': serverTimestamp()
+      author,
+      text,
+      timestamp: serverTimestamp()
     })
   }
 
