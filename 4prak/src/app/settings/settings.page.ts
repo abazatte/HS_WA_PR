@@ -14,8 +14,8 @@ export class SettingsPage {
     this.actualUsername = this.firemessage.getUsername();
   }
 
-  sendUsername() {
-    this.firemessage.setUsername(this.username);
+  async sendUsername() {
+    await this.firemessage.setUsername(this.username);
     this.actualUsername = this.firemessage.getUsername();
   }
 }
