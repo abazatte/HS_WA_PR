@@ -22,7 +22,7 @@ export class SettingsPage {
       this.actualUsername = this.firemessage.getUsername();
     } else {
       const alert = await this.alertController.create({
-        header: 'Alert',
+        header: 'Achtung',
         message: 'Name bereits vergeben',
         buttons: ['OK'],
       });
