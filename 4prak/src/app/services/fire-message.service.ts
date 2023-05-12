@@ -31,8 +31,13 @@ export class FireMessageService {
     })
   }
 
-  public async setUsername(username: string){
-    if (await this.checkIsValid(username)) this.username = username;
+  public async setUsername(username: string) : Promise<boolean>{
+    if (await this.checkIsValid(username)) {
+      this.username = username;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public getUsername() {
