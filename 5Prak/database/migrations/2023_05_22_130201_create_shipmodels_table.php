@@ -16,12 +16,16 @@ return new class extends Migration
             $table->id();
             $table->integer('manufacturer_id')->nullable()->unsigned();
             $table->string('name')->default('');
+            $table->integer('rating')->default(1);
+            $table->integer('year_invention')->default('2');
             $table->timestamps();
         });
 
         Schema::table('ships', function (Blueprint $table) {
             $table->integer('shipmodel_id')->nullable()->unsigned()->after('id');
         });
+
+        DB::statement('ALTER TABLE shipmodels ADD CONSTRAINT chk_rating CHECK (rating < 6 AND rating > 0);');
         // Shipmodel
         // shipmodels
         // shipmodel_id
