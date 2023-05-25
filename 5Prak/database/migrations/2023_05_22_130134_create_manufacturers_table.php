@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('location')->default('');;
             $table->timestamps();
         });
+
+        Schema::table('shipmodels', function (Blueprint $table) {
+            $table->integer('manufacturer_id')->nullable()->unsigned()->after('id');
+        });
     }
 
     /**
