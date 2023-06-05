@@ -7,15 +7,23 @@
                 <tr>
                     <th>Name</th>
                     <th>BRT</th>
-                    <th>Bearbeiten</th>
+                    <th>Jahr</th>
+                    <th>Klasse</th>
+                    <th>Länge in m</th>
+                    <th>Anzahl Mast</th>
+                    <th>Jungfernfahrt</th>
                 </tr>
             </thead>
             <tbody>
                 
                     <tr>
-                        <th>{{ $entity->name}}</th>
-                        <th>{{ $entity->brt}}</th>
-                        <th></th>
+                    <td>{{ $entity->name}}</td>
+                    <td>{{ $entity->brt}}</td>
+                    <td>{{ $entity->year}}</td>
+                    <td>{{ $entity->shipclass}}</td>
+                    <td>{{ $entity->length_m}}</td>
+                    <td>{{ $entity->numberofmast}}</td>
+                    <td>{{ $entity->maiden_voyage}}</td>
                     </tr>   
                 
             </tbody>

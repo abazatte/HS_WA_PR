@@ -8,6 +8,11 @@
                 <tr>
                     <th>Name</th>
                     <th>BRT</th>
+                    <th>Jahr</th>
+                    <th>Klasse</th>
+                    <th>Länge in m</th>
+                    <th>Anzahl Mast</th>
+                    <th>Jungfernfahrt</th>
                     <th>Bearbeiten</th>
                 </tr>
             </thead>
@@ -16,6 +21,11 @@
                     <tr>
                         <td>{{ $ship->name}}</td>
                         <td>{{ $ship->brt}}</td>
+                        <td>{{ $ship->year}}</td>
+                        <td>{{ $ship->shipclass}}</td>
+                        <td>{{ $ship->length_m}}</td>
+                        <td>{{ $ship->numberofmast}}</td>
+                        <td>{{ $ship->maiden_voyage}}</td>
                         <td>
                             <a href="{{url('ships/show/'.$ship->id)}}" class="btn btn-success">Show</a>
                             <a href="{{url('ships/edit/'.$ship->id)}}" class="btn btn-success">Edit</a>
