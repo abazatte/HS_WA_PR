@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('shipmodels', function (Blueprint $table) {
             $table->id();
-            $table->integer('manufacturer_id')->nullable()->unsigned();
             $table->string('name')->default('');
             $table->integer('rating')->default(1);
             $table->integer('year_invention')->default('2');
