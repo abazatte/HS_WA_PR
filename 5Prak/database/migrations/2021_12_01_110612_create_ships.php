@@ -22,7 +22,6 @@ return new class extends Migration
             $table->number('numberofmast')->default(1);
             $table->date('maiden_voyage')->nullable();
             $table->float('brt')->default(0.0);
-            $table->number('modell_id');
             $table->timestamps();
         });
     }
