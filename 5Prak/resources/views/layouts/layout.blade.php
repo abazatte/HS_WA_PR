@@ -33,7 +33,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
-      console.log(window.location.pathname);
+      //Dieser code markiert das aktive fenster als active in der navbar
       var fullpath = window.location.pathname;
       const patharray = fullpath.split('/');
 
@@ -44,8 +44,6 @@
       shiplink.classList.remove("active");
       modelLink.classList.remove("active");
       manuLink.classList.remove("active");
-
-      console.log(patharray[1]);
 
       if(patharray[1] === 'ships'){
           shiplink.classList.add("active");
