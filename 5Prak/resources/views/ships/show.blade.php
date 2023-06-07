@@ -5,6 +5,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>BRT</th>
                     <th>Jahr</th>
@@ -17,6 +18,7 @@
             <tbody>
                 
                     <tr>
+                    <td>{{ $entity->id}}</td>
                     <td>{{ $entity->name}}</td>
                     <td>{{ $entity->brt}}</td>
                     <td>{{ $entity->year}}</td>

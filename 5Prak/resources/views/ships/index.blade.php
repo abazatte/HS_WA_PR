@@ -6,6 +6,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>BRT</th>
                     <th>Jahr</th>
@@ -19,6 +20,7 @@
             <tbody>
                 @foreach($entities as $index=>$ship)
                     <tr>
+                        <td>{{ $ship->id}}</td>
                         <td>{{ $ship->name}}</td>
                         <td>{{ $ship->brt}}</td>
                         <td>{{ $ship->year}}</td>
