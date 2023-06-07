@@ -11,7 +11,6 @@ class ShipmodelController extends Controller
     protected $entityName = 'shipmodels';
     protected $fields = ['manufacturer_id', 'name', 'rating', 'year_invention'];
     protected $validation = [
-        'manufacturer_id' => 'required|numeric',
         'name' => 'required',
         'rating' => 'required|numeric',
         'year_invention' => 'required|numeric'
