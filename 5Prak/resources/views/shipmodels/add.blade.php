@@ -4,23 +4,15 @@
         <h1>Schiff hinzufügen</h1>
         @include('snippets.error')
 
-        {{ html()->form('POST', url('/ships/save'))->open() }}
-            {{ html()->text('name')->class('form-control')->placeholder('Schiffsname...') }}
+        {{ html()->form('POST', url('/shipmodels/save'))->open() }}
+            {{ html()->text('name')->class('form-control')->placeholder('Modellname...') }}
             <br/>
-            {{ html()->number('brt')->class('form-control')->placeholder('BRT...') }}
+            {{ html()->number('rating')->class('form-control')->placeholder('Bewertung') }}
             <br/>
-            {{ html()->number('year')->class('form-control')->placeholder('Jahr') }}
-            <br/>
-            {{ html()->text('shipclass')->class('form-control')->placeholder('Schiffklasse') }}
-            <br/>
-            {{ html()->number('length_m')->class('form-control')->placeholder('Länge in m') }}
-            <br/>
-            {{ html()->number('numberofmast')->class('form-control')->placeholder('Anzahl Mäste') }}
-            <br/>
-            {{ html()->date('maiden_voyage')->class('form-control')->placeholder('Jungfernfahrt') }}
+            {{ html()->number('year_invention')->class('form-control')->placeholder('Erfindungsjahr') }}
             <br/>
             {{ html()->submit('Speichern')->class('btn btn-success') }}
-            <a href="{{url('ships')}}" class="btn btn-danger">Abbrechen</a>
+            <a href="{{url('shipmodels')}}" class="btn btn-danger">Abbrechen</a>
 
         {{ html()->form()->close() }}
 @endsection

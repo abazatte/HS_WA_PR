@@ -6,30 +6,24 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>BRT</th>
-                    <th>Jahr</th>
-                    <th>Klasse</th>
-                    <th>Länge in m</th>
-                    <th>Anzahl Mast</th>
-                    <th>Jungfernfahrt</th>
-                    <th>Bearbeiten</th>
+                    <th>Bewertung</th>
+                    <th>Erfindungsjahr</th>
+                    <th>Hersteller_ID</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($entities as $index=>$ship)
+                @foreach($entities as $index=>$shipmodel)
                     <tr>
-                        <td>{{ $ship->name}}</td>
-                        <td>{{ $ship->brt}}</td>
-                        <td>{{ $ship->year}}</td>
-                        <td>{{ $ship->shipclass}}</td>
-                        <td>{{ $ship->length_m}}</td>
-                        <td>{{ $ship->numberofmast}}</td>
-                        <td>{{ $ship->maiden_voyage}}</td>
+                        <td>{{ $shipmodel->id}}</td>
+                        <td>{{ $shipmodel->name}}</td>
+                        <td>{{ $shipmodel->rating}}</td>
+                        <td>{{ $shipmodel->year_invention}}</td>
                         <td>
-                            <a href="{{url('ships/show/'.$ship->id)}}" class="btn btn-success">Show</a>
-                            <a href="{{url('ships/edit/'.$ship->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{url('ships/delete/'.$ship->id)}}" class="btn btn-danger">Del</a>
+                            <a href="{{url('shipmodels/show/'.$shipmodel->id)}}" class="btn btn-success">Show</a>
+                            <a href="{{url('shipmodels/edit/'.$shipmodel->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{url('shipmodels/delete/'.$shipmodel->id)}}" class="btn btn-danger">Del</a>
                         </td>
                     </tr>   
                 @endforeach
@@ -39,7 +33,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <a href="{{url('ships/add')}}" class="btn btn-success">Add</a>
+                        <a href="{{url('shipmodels/add')}}" class="btn btn-success">Add</a>
                     </td>
                 </tr>   
             </tfoot>
