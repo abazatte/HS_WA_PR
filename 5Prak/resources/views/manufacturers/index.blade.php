@@ -6,30 +6,22 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>BRT</th>
-                    <th>Jahr</th>
-                    <th>Klasse</th>
-                    <th>Länge in m</th>
-                    <th>Anzahl Mast</th>
-                    <th>Jungfernfahrt</th>
+                    <th>Location</th>
                     <th>Bearbeiten</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($entities as $index=>$ship)
+                @foreach($entities as $index=>$manufacturer)
                     <tr>
-                        <td>{{ $ship->name}}</td>
-                        <td>{{ $ship->brt}}</td>
-                        <td>{{ $ship->year}}</td>
-                        <td>{{ $ship->shipclass}}</td>
-                        <td>{{ $ship->length_m}}</td>
-                        <td>{{ $ship->numberofmast}}</td>
-                        <td>{{ $ship->maiden_voyage}}</td>
+                        <td>{{ $manufacturer->id }}</td>
+                        <td>{{ $manufacturer->name }}</td>
+                        <td>{{ $manufacturer->location }}</td>
                         <td>
-                            <a href="{{url('ships/show/'.$ship->id)}}" class="btn btn-success">Show</a>
-                            <a href="{{url('ships/edit/'.$ship->id)}}" class="btn btn-success">Edit</a>
-                            <a href="{{url('ships/delete/'.$ship->id)}}" class="btn btn-danger">Del</a>
+                            <a href="{{url('manufacturers/show/'.$manufacturer->id)}}" class="btn btn-success">Show</a>
+                            <a href="{{url('manufacturers/edit/'.$manufacturer->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{url('manufacturers/delete/'.$manufacturer->id)}}" class="btn btn-danger">Del</a>
                         </td>
                     </tr>   
                 @endforeach
@@ -37,9 +29,8 @@
             <tfoot>
                 <tr>
                     <td></td>
-                    <td></td>
                     <td>
-                        <a href="{{url('ships/add')}}" class="btn btn-success">Add</a>
+                        <a href="{{url('manufacturers/add')}}" class="btn btn-success">Add</a>
                     </td>
                 </tr>   
             </tfoot>

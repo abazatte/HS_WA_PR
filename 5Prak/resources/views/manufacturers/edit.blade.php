@@ -4,23 +4,13 @@
         <h1>Schiff bearbeiten</h1>
         @include('snippets.error')
 
-        {{ html()->modelForm($entity, 'POST', url('ships/update/'.$entity->id))->open() }}
+        {{ html()->modelForm($entity, 'POST', url('manufacturers/update/'.$entity->id))->open() }}
             {{ html()->text('name')->class('form-control')->placeholder('Schiffsname...') }}
             <br/>
-            {{ html()->text('brt')->class('form-control')->placeholder('BRT...') }}
-            <br/>
-            {{ html()->number('year')->class('form-control')->placeholder('Jahr') }}
-            <br/>
-            {{ html()->text('shipclass')->class('form-control')->placeholder('Schiffklasse') }}
-            <br/>
-            {{ html()->number('length_m')->class('form-control')->placeholder('Länge in m') }}
-            <br/>
-            {{ html()->number('numberofmast')->class('form-control')->placeholder('Anzahl Mäste') }}
-            <br/>
-            {{ html()->date('maiden_voyage')->class('form-control')->placeholder('Jungfernfahrt') }}
+            {{ html()->text('location')->class('form-control')->placeholder('Ort...') }}
             <br/>
             {{ html()->submit('Speichern')->class('btn btn-success') }}
-            <a href="{{url('ships')}}" class="btn btn-danger">Abbrechen</a>
+            <a href="{{url('manufacturers')}}" class="btn btn-danger">Abbrechen</a>
 
         {{ html()->closeModelForm() }}
 
