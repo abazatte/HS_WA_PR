@@ -19,7 +19,7 @@
           <a id="ship_link" class="nav-link" href="/ships">Schiffe</a>
         </li>
         <li class="nav-item">
-          <a id="model_link" class="nav-link" href="/models">Modelle</a>
+          <a id="model_link" class="nav-link" href="/shipmodels">Modelle</a>
         </li>
         <li class="nav-item">
           <a id="manufacturer_link" class="nav-link" href="/manufacturers">Hersteller</a>
