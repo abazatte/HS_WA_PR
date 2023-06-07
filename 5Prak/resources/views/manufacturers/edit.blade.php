@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-        <h1>Schiff bearbeiten</h1>
+        <h1>Hersteller bearbeiten</h1>
         @include('snippets.error')
 
         {{ html()->modelForm($entity, 'POST', url('manufacturers/update/'.$entity->id))->open() }}

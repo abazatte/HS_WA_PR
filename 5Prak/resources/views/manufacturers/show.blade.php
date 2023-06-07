@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <h1>Das Schiff "{{ $entity->name}}"</h1>
+    <h1>Das Hersteller "{{ $entity->name}}"</h1>
     <table class="table table-striped">
         <thead>
             <tr>
