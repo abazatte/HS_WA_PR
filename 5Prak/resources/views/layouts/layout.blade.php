@@ -48,10 +48,10 @@
       if(patharray[1] === 'ships'){
           shiplink.classList.add("active");
           console.log('moin');
-      }else if(patharray[1] === 'models'){
+      }else if(patharray[1] === 'shipmodels'){
           modelLink.classList.add("active");
       } else if(patharray[1] === 'manufacturers'){
-          manuLink.classList.remove("active");
+          manuLink.classList.add("active");
       }
     </script>
   </body>
