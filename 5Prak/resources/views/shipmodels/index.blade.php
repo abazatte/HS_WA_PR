@@ -11,15 +11,17 @@
                     <th>Bewertung</th>
                     <th>Erfindungsjahr</th>
                     <th>Hersteller_ID</th>
+                    <th>Bearbeiten</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($entities as $index=>$shipmodel)
                     <tr>
-                        <td>{{ $shipmodel->id}}</td>
-                        <td>{{ $shipmodel->name}}</td>
-                        <td>{{ $shipmodel->rating}}</td>
-                        <td>{{ $shipmodel->year_invention}}</td>
+                        <td>{{ $shipmodel->id }}</td>
+                        <td>{{ $shipmodel->name }}</td>
+                        <td>{{ $shipmodel->rating }}</td>
+                        <td>{{ $shipmodel->year_invention }}</td>
+                        <td>{{ $shipmodel->manufacturer_id }}</td>
                         <td>
                             <a href="{{url('shipmodels/show/'.$shipmodel->id)}}" class="btn btn-success">Show</a>
                             <a href="{{url('shipmodels/edit/'.$shipmodel->id)}}" class="btn btn-success">Edit</a>
@@ -30,7 +32,6 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
                     <td></td>
                     <td>
                         <a href="{{url('shipmodels/add')}}" class="btn btn-success">Add</a>

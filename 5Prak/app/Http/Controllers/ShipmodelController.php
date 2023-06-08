@@ -22,4 +22,15 @@ class ShipmodelController extends Controller
     public function getAdd() {
         return view($this->entityName.'.add')->with('manufacturers', Manufacturer::all());
     }
+
+    public function getEdit($id)
+    {
+        $class = $this->className;
+        $entity = $class::find($id);
+        if ($entity)
+        {
+            return view($this->entityName.'.edit')->with('entity', $entity)->with('manufacturers', Manufacturer::all());
+        }
+        return redirect($this->entityName.'/index');
+    }
 }

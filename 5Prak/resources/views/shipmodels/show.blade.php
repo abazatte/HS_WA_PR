@@ -19,6 +19,7 @@
                     <td>{{ $entity->name}}</td>
                     <td>{{ $entity->rating}}</td>
                     <td>{{ $entity->year_invention}}</td>
+                    <td>{{ $entity->manufacturer_id}}</td>
                     </tr>   
                 
             </tbody>

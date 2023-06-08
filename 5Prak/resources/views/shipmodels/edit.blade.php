@@ -11,6 +11,12 @@
             <br/>
             {{ html()->number('year_invention')->class('form-control')->placeholder('Erfindungsjahr') }}
             <br/>
+            <select name="manufacturer_id" class="form-select">
+            @foreach($manufacturers as $manufacturer)
+                <option value="{{ $manufacturer->id }}">{{ $manufacturer->id }} {{ $manufacturer->name }}</option>  
+            @endforeach
+            </select>
+            <br>
             {{ html()->submit('Speichern')->class('btn btn-success') }}
             <a href="{{url('shipmodels')}}" class="btn btn-danger">Abbrechen</a>
 
