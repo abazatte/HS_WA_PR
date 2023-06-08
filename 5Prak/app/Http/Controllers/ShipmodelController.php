@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ship;
+use App\Models\Shipmodel;
+use App\Models\Manufacturer;
 
 class ShipmodelController extends Controller
 {   
@@ -16,4 +17,9 @@ class ShipmodelController extends Controller
         'year_invention' => 'required|numeric'
     ];
     //
+//
+
+    public function getAdd() {
+        return view($this->entityName.'.add')->with('manufacturers', Manufacturer::all());
+    }
 }
