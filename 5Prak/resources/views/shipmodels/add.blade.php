@@ -13,7 +13,7 @@
             <br/>
             <select name="manufacturer_id" class="form-select">
             @foreach($manufacturers as $manufacturer)
-                <option value="{{ $manufacturer->name }}">{{ $manufacturer->id }} {{ $manufacturer->name }}</option>  
+                <option value="{{ $manufacturer->id }}">{{ $manufacturer->id }} {{ $manufacturer->name }}</option>  
             @endforeach
             </select>
             <br>
