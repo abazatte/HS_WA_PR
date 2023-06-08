@@ -14,6 +14,7 @@
                     <th>Länge in m</th>
                     <th>Anzahl Mast</th>
                     <th>Jungfernfahrt</th>
+                    <th>Shipmodell</th>
                     <th>Bearbeiten</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                         <td>{{ $ship->length_m}}</td>
                         <td>{{ $ship->numberofmast}}</td>
                         <td>{{ $ship->maiden_voyage}}</td>
+                        <td>{{ $ship->shipmodel_id}}</td>
                         <td>
                             <a href="{{url('ships/show/'.$ship->id)}}" class="btn btn-success">Show</a>
                             <a href="{{url('ships/edit/'.$ship->id)}}" class="btn btn-success">Edit</a>
@@ -38,7 +40,6 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td></td>
                     <td></td>
                     <td>
                         <a href="{{url('ships/add')}}" class="btn btn-success">Add</a>

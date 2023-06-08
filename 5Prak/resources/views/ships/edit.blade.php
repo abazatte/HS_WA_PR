@@ -19,6 +19,12 @@
             <br/>
             {{ html()->date('maiden_voyage')->class('form-control')->placeholder('Jungfernfahrt') }}
             <br/>
+            <select name="shipmodel_id" class="form-select">
+            @foreach($shipmodels as $shipmodel)
+                <option value="{{ $shipmodel->id }}">{{ $shipmodel->id }} {{ $shipmodel->name }}</option>  
+            @endforeach
+            </select>
+            <br>
             {{ html()->submit('Speichern')->class('btn btn-success') }}
             <a href="{{url('ships')}}" class="btn btn-danger">Abbrechen</a>
 
