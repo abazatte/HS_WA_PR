@@ -13,7 +13,8 @@
                     <th>Länge in m</th>
                     <th>Anzahl Mast</th>
                     <th>Jungfernfahrt</th>
-                    <th>Shipmodell</th>
+                    <th>Schiffmodell_ID</th>
+                    <th>Schiffmodell</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,9 @@
                         <td>{{ $entity->numberofmast}}</td>
                         <td>{{ $entity->maiden_voyage}}</td>
                         <td>{{ $entity->shipmodel_id}}</td>
+                        @if($shipmodel)
+                        <td>{{ $shipmodel->name}}</td>
+                        @endif
                     </tr>   
                 
             </tbody>

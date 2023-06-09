@@ -18,6 +18,16 @@ class ShipmodelController extends Controller
     ];
     //
 //
+    public function getShow($id)
+    {
+        $class = $this->className;
+        $entity = $class::find($id);
+        if ($entity)
+        {
+            return view($this->entityName.'.show')->with('entity', $entity)->with('manufacturer',Manufacturer::find($entity->manufacturer_id));
+        }
+        return redirect($this->entityName.'/index');
+    }
 
     public function getAdd() {
         return view($this->entityName.'.add')->with('manufacturers', Manufacturer::all());

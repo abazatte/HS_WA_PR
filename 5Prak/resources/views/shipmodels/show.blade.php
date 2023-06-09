@@ -10,6 +10,7 @@
                     <th>Bewertung</th>
                     <th>Erfindungsjahr</th>
                     <th>Hersteller_ID</th>
+                    <th>Herstellername</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,9 @@
                     <td>{{ $entity->rating}}</td>
                     <td>{{ $entity->year_invention}}</td>
                     <td>{{ $entity->manufacturer_id}}</td>
+                    @if($manufacturer)
+                    <td>{{ $manufacturer->name}}</td>
+                    @endif
                     </tr>   
                 
             </tbody>

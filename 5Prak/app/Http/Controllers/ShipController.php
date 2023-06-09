@@ -21,6 +21,17 @@ class ShipController extends Controller
         'brt' => 'required|numeric'
     ];
     //
+    public function getShow($id)
+    {
+        $class = $this->className;
+        $entity = $class::find($id);
+        if ($entity)
+        {
+            return view($this->entityName.'.show')->with('entity', $entity)->with('shipmodel',Shipmodel::find($entity->shipmodel_id));
+        } 
+        return redirect($this->entityName.'/index');
+    }
+
 
     public function getAdd() {
         return view($this->entityName.'.add')->with('shipmodels', Shipmodel::all());
