@@ -10,7 +10,7 @@
                     <th>Name</th>
                     <th>Bewertung</th>
                     <th>Erfindungsjahr</th>
-                    <th>Hersteller_ID</th>
+                    <th>Hersteller</th>
                     <th>Bearbeiten</th>
                 </tr>
             </thead>
@@ -21,7 +21,7 @@
                         <td>{{ $shipmodel->name }}</td>
                         <td>{{ $shipmodel->rating }}</td>
                         <td>{{ $shipmodel->year_invention }}</td>
-                        <td>{{ $shipmodel->manufacturer_id }}</td>
+                        <td>{{ $shipmodel->manufacturer->name ?? '' }}</td>
                         <td>
                             <a href="{{url('shipmodels/show/'.$shipmodel->id)}}" class="btn btn-success">Show</a>
                             <a href="{{url('shipmodels/edit/'.$shipmodel->id)}}" class="btn btn-success">Edit</a>

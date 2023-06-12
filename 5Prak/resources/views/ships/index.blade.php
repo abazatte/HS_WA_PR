@@ -29,7 +29,7 @@
                         <td>{{ $ship->length_m}}</td>
                         <td>{{ $ship->numberofmast}}</td>
                         <td>{{ $ship->maiden_voyage}}</td>
-                        <td>{{ $ship->shipmodel_id}}</td>
+                        <td>{{ $ship->shipmodel->year_invention}}</td>
                         <td>
                             <a href="{{url('ships/show/'.$ship->id)}}" class="btn btn-success">Show</a>
                             <a href="{{url('ships/edit/'.$ship->id)}}" class="btn btn-success">Edit</a>
